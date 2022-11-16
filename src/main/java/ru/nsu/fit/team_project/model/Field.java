@@ -1,16 +1,14 @@
 package ru.nsu.fit.team_project.model;
 
-public class Field {
+public abstract class Field {
     String id;
     String name;
-    String value;
+    Object value;
 
     public Field(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public void addValue(String value) {
-        this.value = value;
-    }
+    abstract void addValue(Object value);
 }

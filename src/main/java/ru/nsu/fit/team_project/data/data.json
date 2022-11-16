@@ -1,19 +1,21 @@
 {
-  "commands":[
+  "commands": [
     {
-      "id":1,
-      "commandName":"createObject"
+      "id": 1,
+      "commandName": "createObject",
+      "type": "Task"
     },
     {
-      "id":2,
-      "commandName":"addField",
-      "fieldName":"taskName"
+      "id": 2,
+      "commandName": "addField",
+      "parentId": "1",
+      "fieldName": "taskName"
     },
     {
-      "id":3,
-      "commandName":"setValue",
-      "fieldName":"taskName",
-      "fieldValue":"?"
+      "id": 3,
+      "commandName": "setValue",
+      "fieldName": "taskName",
+      "fieldValue": "task 1"
     }
   ]
 }
