@@ -1,5 +1,7 @@
 package ru.nsu.fit.team_project.model;
 
+import ru.nsu.fit.team_project.model.fields.Field;
+
 import java.util.List;
 
 public class MObject {
@@ -7,7 +9,7 @@ public class MObject {
     String type;
     List<Field> fields;
 
-    void addField(Field field) {
+    public void addField(Field field) {
         fields.add(field);
     }
 }
