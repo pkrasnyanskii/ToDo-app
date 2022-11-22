@@ -1,4 +1,4 @@
-package ru.nsu.fit.team_project.model;
+package ru.nsu.fit.team_project.model.fields;
 
 public abstract class Field {
     String id;
