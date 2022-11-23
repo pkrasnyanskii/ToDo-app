@@ -3,18 +3,19 @@
     {
       "id": 1,
       "commandName": "createObject",
+      "objectId": "testId",
       "type": "Task"
     },
     {
       "id": 2,
       "commandName": "addField",
-      "parentId": "1",
-      "fieldName": "taskName"
+      "objectId": "testId",
+      "fieldId": "fId"
     },
     {
       "id": 3,
       "commandName": "setValue",
-      "fieldName": "taskName",
+      "fieldId": "fId",
       "fieldValue": "task 1"
     }
   ]
