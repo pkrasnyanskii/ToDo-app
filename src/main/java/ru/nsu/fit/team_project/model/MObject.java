@@ -12,4 +12,8 @@ public class MObject {
     public void addField(Field field) {
         fields.add(field);
     }
+
+    public String getId() {
+        return id;
+    }
 }

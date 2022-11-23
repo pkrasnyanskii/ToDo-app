@@ -4,14 +4,15 @@ import ru.nsu.fit.team_project.model.commands.Command;
 
 import java.util.List;
 
+//todo transfer current db state to commands
 public class CommandExecutor {
-    List<Command> commands;
+    private final Model model;
 
-    public CommandExecutor(List<Command> commands) {
-        this.commands = commands;
+    public CommandExecutor(Model model) {
+        this.model = model;
     }
 
     public void executeAll() {
-        commands.forEach(Command::execute);
+        model.commands.forEach(c -> c.execute(model));
     }
 }

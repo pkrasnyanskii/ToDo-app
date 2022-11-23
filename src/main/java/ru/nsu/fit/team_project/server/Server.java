@@ -6,10 +6,6 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Server {
-    public static void main(String[] args) {
-        connectToServer();
-    }
-
     public static void connectToServer() {
         try(ServerSocket serverSocket = new ServerSocket(9991)) {
             Socket connectionSocket = serverSocket.accept();
