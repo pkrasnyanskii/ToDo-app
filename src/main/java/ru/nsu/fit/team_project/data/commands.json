@@ -1,0 +1,13 @@
+[
+  {
+    "objectId": "7b0f6383-69f8-4e9f-acf9-cc1a3d8d20b9",
+    "objectType": "task",
+    "commandId": "657823c4-29f2-473f-be83-e52b05d94472"
+  },
+  {
+    "objectId": "62950fc3-fbe6-471d-ba1f-0c63b82d2f77",
+    "fieldName": "test_field",
+    "fieldType": "String",
+    "commandId": "8944ad5f-fb77-4fa7-b5da-d321c8395cc3"
+  }
+]

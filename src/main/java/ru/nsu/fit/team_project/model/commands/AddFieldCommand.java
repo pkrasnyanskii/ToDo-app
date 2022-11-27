@@ -28,9 +28,9 @@ public class AddFieldCommand extends Command {
                 .orElseThrow();
 
         switch (fieldType) {
-            case "String" -> object.addField(new StringField("id", fieldName));
-            case "int" -> object.addField(new IntegerField("id", fieldName));
-            case "double" -> object.addField(new DoubleField("id", fieldName));
+            case "String" -> object.addField(new StringField(fieldName));
+            case "int" -> object.addField(new IntegerField(fieldName));
+            case "double" -> object.addField(new DoubleField(fieldName));
             default -> throw new IllegalArgumentException("Unsupported field type");
         }
     }

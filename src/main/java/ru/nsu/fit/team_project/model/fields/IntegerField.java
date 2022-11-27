@@ -3,8 +3,8 @@ package ru.nsu.fit.team_project.model.fields;
 public class IntegerField extends Field {
     int value;
 
-    public IntegerField(String id, String name) {
-        super(id, name);
+    public IntegerField(String name) {
+        super(name);
     }
 
     @Override
