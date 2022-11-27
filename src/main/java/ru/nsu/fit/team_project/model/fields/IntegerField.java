@@ -8,7 +8,7 @@ public class IntegerField extends Field {
     }
 
     @Override
-    void addValue(Object value) {
+    public void addValue(Object value) {
         this.value = (Integer) value;
     }
 }

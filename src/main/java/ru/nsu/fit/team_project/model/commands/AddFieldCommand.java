@@ -9,12 +9,12 @@ import ru.nsu.fit.team_project.model.fields.StringField;
 import java.util.UUID;
 
 public class AddFieldCommand extends Command {
-    UUID objectId;
+    UUID objectID;
     String fieldName;
     String fieldType;
 
     public AddFieldCommand(UUID objectId, String fieldName, String fieldType) {
-        this.objectId = objectId;
+        this.objectID = objectId;
         this.fieldName = fieldName;
         this.fieldType = fieldType;
     }
@@ -22,10 +22,10 @@ public class AddFieldCommand extends Command {
     @Override
     public void execute(Model model) {
         MObject object = model.getObjects()
-                .stream()
-                .filter(mObj -> mObj.getId().equals(objectId))
-                .findAny()
-                .orElseThrow();
+                              .stream()
+                              .filter(o -> o.getId().equals(objectID))
+                              .findAny()
+                              .orElseThrow();
 
         switch (fieldType) {
             case "String" -> object.addField(new StringField(fieldName));

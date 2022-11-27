@@ -11,5 +11,10 @@ public abstract class Field {
         this.name = name;
     }
 
-    abstract void addValue(Object value);
+    public UUID getID() {
+        return id;
+    }
+
+    public abstract void addValue(Object value);
 }
+

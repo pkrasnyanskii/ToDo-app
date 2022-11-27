@@ -24,6 +24,17 @@ public class MObject {
         fields.add(field);
     }
 
+    public Field getField(UUID fieldID) {
+        return fields.stream()
+                     .filter(f -> f.getID().equals(id))
+                     .findAny()
+                     .orElseThrow();
+    }
+
+    public List<Field> getFields() {
+        return fields;
+    }
+
     public UUID getId() {
         return id;
     }

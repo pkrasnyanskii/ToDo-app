@@ -20,8 +20,8 @@ public class Main {
 
         UUID testId = UUID.randomUUID();
         Command createObj = new CreateObjectCommand("task");
-        Command addField = new AddFieldCommand(testId, "test_field", "String");
-        Command setFieldValue = new SetFieldValueCommand();
+        Command addField = new AddFieldCommand(testId, "taskName", "String");
+        Command setFieldValue = new SetFieldValueCommand(testId, "Task1");
 
         model.addCommand(createObj);
         model.addCommand(addField);
