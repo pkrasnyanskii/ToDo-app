@@ -8,7 +8,7 @@ public class DoubleField extends Field {
     }
 
     @Override
-    void addValue(Object value) {
+    public void addValue(Object value) {
         this.value = (Double) value;
     }
 }

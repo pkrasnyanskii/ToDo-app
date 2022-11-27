@@ -6,7 +6,7 @@ import ru.nsu.fit.team_project.model.Model;
 import java.util.UUID;
 
 public class CreateObjectCommand extends Command {
-    private final UUID objectId = UUID.randomUUID();
+    private final UUID objectID = UUID.randomUUID();
     private final String objectType;
 
     public CreateObjectCommand(String objectType) {
@@ -15,6 +15,6 @@ public class CreateObjectCommand extends Command {
 
     @Override
     public void execute(Model model) {
-        model.addObject(new MObject(objectId, objectType));
+        model.addObject(new MObject(objectID, objectType));
     }
 }

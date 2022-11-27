@@ -8,7 +8,7 @@ public class StringField extends Field {
     }
 
     @Override
-    void addValue(Object value) {
+    public void addValue(Object value) {
         this.value = (String) value;
     }
 }
