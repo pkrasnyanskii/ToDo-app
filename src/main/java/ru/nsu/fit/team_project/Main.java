@@ -9,6 +9,7 @@ import ru.nsu.fit.team_project.serialization.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,8 +17,9 @@ public class Main {
 
         Model model = new Model();
 
-        Command createObj = new CreateObjectCommand();
-        Command addField = new AddFieldCommand("test_id", "test_field", "String");
+        UUID testId = UUID.randomUUID();
+        Command createObj = new CreateObjectCommand("task");
+        Command addField = new AddFieldCommand(testId, "test_field", "String");
 
         model.addCommand(createObj);
         model.addCommand(addField);

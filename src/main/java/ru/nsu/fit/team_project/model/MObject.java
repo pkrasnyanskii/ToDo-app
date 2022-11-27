@@ -2,18 +2,33 @@ package ru.nsu.fit.team_project.model;
 
 import ru.nsu.fit.team_project.model.fields.Field;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MObject {
-    String id;
+    UUID id;
     String type;
-    List<Field> fields;
+    List<Field> fields = new ArrayList<>();
+
+    public MObject() {
+
+    }
+
+    public MObject(UUID id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 
     public void addField(Field field) {
         fields.add(field);
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }
