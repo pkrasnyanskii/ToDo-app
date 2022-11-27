@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    List<MObject> objects = new ArrayList<>();
-    List<Command> commands = new ArrayList<>();
+    private final List<MObject> objects = new ArrayList<>();
+    private final List<Command> commands;
 
     public Model() {
+        this(new ArrayList<>());
+    }
 
+    public Model(List<Command> commands) {
+        this.commands = commands;
     }
 
     public List<MObject> getObjects() {

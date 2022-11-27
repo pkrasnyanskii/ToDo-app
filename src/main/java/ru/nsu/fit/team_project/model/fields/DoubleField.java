@@ -3,8 +3,8 @@ package ru.nsu.fit.team_project.model.fields;
 public class DoubleField extends Field {
     double value;
 
-    public DoubleField(String id, String name) {
-        super(id, name);
+    public DoubleField(String name) {
+        super(name);
     }
 
     @Override
