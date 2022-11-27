@@ -6,12 +6,14 @@ import ru.nsu.fit.team_project.model.fields.DoubleField;
 import ru.nsu.fit.team_project.model.fields.IntegerField;
 import ru.nsu.fit.team_project.model.fields.StringField;
 
+import java.util.UUID;
+
 public class AddFieldCommand extends Command {
-    String objectId;
+    UUID objectId;
     String fieldName;
     String fieldType;
 
-    public AddFieldCommand(String objectId, String fieldName, String fieldType) {
+    public AddFieldCommand(UUID objectId, String fieldName, String fieldType) {
         this.objectId = objectId;
         this.fieldName = fieldName;
         this.fieldType = fieldType;
