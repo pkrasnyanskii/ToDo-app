@@ -10,6 +10,7 @@ public class SetFieldValueCommand extends Command {
     private final Object value;
 
     public SetFieldValueCommand(UUID fieldID, Object value) {
+        super("SetFieldValueCommand");
         this.fieldID = fieldID;
         this.value = value;
     }

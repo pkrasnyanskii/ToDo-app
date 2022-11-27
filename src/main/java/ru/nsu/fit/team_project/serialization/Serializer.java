@@ -2,26 +2,37 @@ package ru.nsu.fit.team_project.serialization;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import ru.nsu.fit.team_project.model.Model;
+import ru.nsu.fit.team_project.model.commands.Command;
 
-import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class Serializer {
+    private static final String file = "src/main/java/ru/nsu/fit/team_project/data/commands.json";
+
     public void serialize(Model model) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(model.getCommands());
-
-        String file = "src/main/java/ru/nsu/fit/team_project/data/commands.json";
-
-        //debug data
-        System.out.println("Serialized commands:");
-        System.out.println(json);
-        //
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(json);
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(model.getCommands(), writer);
         }
+
+    }
+
+    public List<Command> deserialize() throws IOException {
+        Gson gson = new GsonBuilder().registerTypeAdapter(Command.class, new CommandDeserializer()).create();
+        List<Command> commands;
+
+        try (JsonReader reader = new JsonReader(new FileReader(file))) {
+            TypeToken<List<Command>> commandsListType = new TypeToken<>() {
+            };
+            commands = gson.fromJson(reader, commandsListType);
+        }
+
+        return commands;
     }
 }
