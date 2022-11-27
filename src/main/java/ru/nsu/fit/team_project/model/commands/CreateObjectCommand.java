@@ -10,6 +10,7 @@ public class CreateObjectCommand extends Command {
     private final String objectType;
 
     public CreateObjectCommand(String objectType) {
+        super("CreateObjectCommand");
         this.objectType = objectType;
     }
 

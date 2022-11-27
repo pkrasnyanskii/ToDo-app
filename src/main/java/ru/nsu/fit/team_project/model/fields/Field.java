@@ -5,7 +5,6 @@ import java.util.UUID;
 public abstract class Field {
     private final UUID id = UUID.randomUUID();
     private final String name;
-    private Object value;
 
     public Field(String name) {
         this.name = name;

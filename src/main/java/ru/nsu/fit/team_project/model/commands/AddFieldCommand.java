@@ -14,6 +14,7 @@ public class AddFieldCommand extends Command {
     String fieldType;
 
     public AddFieldCommand(UUID objectId, String fieldName, String fieldType) {
+        super("AddFieldCommand");
         this.objectID = objectId;
         this.fieldName = fieldName;
         this.fieldType = fieldType;

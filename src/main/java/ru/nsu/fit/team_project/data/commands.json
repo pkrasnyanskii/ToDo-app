@@ -1,18 +1,21 @@
 [
   {
-    "objectID": "cc24e28b-4d8b-4aff-82db-fd90e9a142b4",
+    "objectID": "38cb38bd-f447-451e-8679-ea7a8668aee4",
     "objectType": "task",
-    "commandId": "860e8747-29d8-4009-b4be-208693bb36e8"
+    "commandId": "6c887372-2137-414f-8747-00399f57816c",
+    "commandName": "CreateObjectCommand"
   },
   {
-    "objectID": "d0d91750-21c7-4a49-af51-4bd37c86a7a4",
+    "objectID": "3edea46b-4ca2-4929-ae79-bf012c5e43ba",
     "fieldName": "taskName",
     "fieldType": "String",
-    "commandId": "5fa07e00-a7da-4017-ad15-ee11aed852f3"
+    "commandId": "a39bae31-91f5-41f8-81a0-30e3686d1136",
+    "commandName": "AddFieldCommand"
   },
   {
-    "fieldID": "d0d91750-21c7-4a49-af51-4bd37c86a7a4",
+    "fieldID": "3edea46b-4ca2-4929-ae79-bf012c5e43ba",
     "value": "Task1",
-    "commandId": "c5f600e3-fd8d-41c8-8cf5-d14f86933f34"
+    "commandId": "24cbc24f-579d-4696-8a9f-1302516d268d",
+    "commandName": "SetFieldValueCommand"
   }
 ]
