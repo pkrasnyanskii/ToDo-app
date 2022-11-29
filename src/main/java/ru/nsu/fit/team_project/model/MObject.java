@@ -26,8 +26,8 @@ public class MObject {
 
     public Field getField(UUID fieldID) {
         return fields.stream()
-                     .filter(f -> f.getID().equals(id))
-                     .findAny()
+                     .filter(f -> f.getID().equals(fieldID))
+                     .findFirst()
                      .orElseThrow();
     }
 
