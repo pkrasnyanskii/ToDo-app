@@ -3,10 +3,12 @@ package ru.nsu.fit.team_project.model.fields;
 import java.util.UUID;
 
 public abstract class Field {
-    private final UUID id = UUID.randomUUID();
+    private final UUID id;
     private final String name;
+    private Object value;
 
-    public Field(String name) {
+    public Field(UUID id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -14,6 +16,17 @@ public abstract class Field {
         return id;
     }
 
-    public abstract void addValue(Object value);
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return name + " = " + value;
+    }
 }
 
