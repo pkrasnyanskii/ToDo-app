@@ -12,8 +12,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Command> testData = new ArrayList<>();
-
         Model model = new Model();
 
         CommandExecutor ce = new CommandExecutor(model);
