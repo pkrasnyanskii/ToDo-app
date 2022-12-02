@@ -2,7 +2,7 @@ package ru.nsu.fit.team_project.model.fields;
 
 import java.util.UUID;
 
-public abstract class Field {
+public class Field {
     private final UUID id;
     private final String name;
     private Object value;

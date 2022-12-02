@@ -2,9 +2,7 @@ package ru.nsu.fit.team_project.model.commands;
 
 import ru.nsu.fit.team_project.model.MObject;
 import ru.nsu.fit.team_project.model.Model;
-import ru.nsu.fit.team_project.model.fields.DoubleField;
-import ru.nsu.fit.team_project.model.fields.IntegerField;
-import ru.nsu.fit.team_project.model.fields.StringField;
+import ru.nsu.fit.team_project.model.fields.Field;
 
 import java.util.UUID;
 
@@ -29,11 +27,6 @@ public class AddFieldCommand extends Command {
                               .findAny()
                               .orElseThrow();
 
-        switch (fieldType) {
-            case "String" -> object.addField(new StringField(fieldID, fieldName));
-            case "int" -> object.addField(new IntegerField(fieldID, fieldName));
-            case "double" -> object.addField(new DoubleField(fieldID, fieldName));
-            default -> throw new IllegalArgumentException("Unsupported field type");
-        }
+        object.addField(new Field(fieldID, fieldName));
     }
 }
