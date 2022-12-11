@@ -1,4 +1,4 @@
-package ru.nsu.fit.team_project.plannerscape;
+package ru.nsu.fit.team_project;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
@@ -19,8 +19,6 @@ import javafx.stage.Stage;
 import ru.nsu.fit.team_project.model.CommandExecutor;
 import ru.nsu.fit.team_project.model.MObject;
 import ru.nsu.fit.team_project.model.Model;
-import ru.nsu.fit.team_project.model.commands.AddFieldCommand;
-import ru.nsu.fit.team_project.model.commands.CreateObjectCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +27,10 @@ import java.util.function.Predicate;
 public class Application extends javafx.application.Application {
     public List<Task> createTasks(List<MObject> objects) {
         List<Task> tasks = new ArrayList<>();
-        objects.forEach(obj -> tasks.add(new Task(obj.getFieldByName("taskName").getValue().toString(), "")));
+        objects.forEach(obj -> tasks.add(new Task(
+                obj.getFieldByName("taskName").getValue().toString(),
+                ""
+        )));
         return tasks;
     }
 
@@ -149,7 +150,7 @@ public class Application extends javafx.application.Application {
 
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         launch();
     }
 }

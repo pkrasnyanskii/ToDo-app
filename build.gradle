@@ -24,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'ru.nsu.fit.team_project.plannerscape'
-    mainClass = 'ru.nsu.fit.team_project.plannerscape.TodoApplication'
+    mainModule = 'ru.nsu.fit.team_project'
+    mainClass = 'ru.nsu.fit.team_project.TodoApplication'
 }
 
 javafx {
