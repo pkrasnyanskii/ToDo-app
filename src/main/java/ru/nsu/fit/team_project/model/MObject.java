@@ -24,9 +24,16 @@ public class MObject {
         fields.add(field);
     }
 
-    public Field getField(UUID fieldID) {
+    public Field getFieldByID(UUID fieldID) {
         return fields.stream()
                      .filter(f -> f.getID().equals(fieldID))
+                     .findFirst()
+                     .orElseThrow();
+    }
+
+    public Field getFieldByName(String name) {
+        return fields.stream()
+                     .filter(f -> f.getName().equals(name))
                      .findFirst()
                      .orElseThrow();
     }

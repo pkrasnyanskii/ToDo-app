@@ -25,7 +25,7 @@ public class SetFieldValueCommand extends Command {
                            )
                            .findAny()
                            .orElseThrow()
-                           .getField(fieldID);
+                           .getFieldByID(fieldID);
         field.setValue(value);
     }
 }

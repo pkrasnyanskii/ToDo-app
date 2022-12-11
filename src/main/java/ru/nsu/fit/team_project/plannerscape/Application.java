@@ -16,22 +16,39 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import ru.nsu.fit.team_project.model.CommandExecutor;
+import ru.nsu.fit.team_project.model.MObject;
+import ru.nsu.fit.team_project.model.Model;
+import ru.nsu.fit.team_project.model.commands.AddFieldCommand;
+import ru.nsu.fit.team_project.model.commands.CreateObjectCommand;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Application extends javafx.application.Application {
+    public List<Task> createTasks(List<MObject> objects) {
+        List<Task> tasks = new ArrayList<>();
+        objects.forEach(obj -> tasks.add(new Task(obj.getFieldByName("taskName").getValue().toString(), "")));
+        return tasks;
+    }
+
     @Override
     public void start(Stage stage) {
+        Model model = new Model();
+
+        CommandExecutor ce = new CommandExecutor(model);
+        ce.executeAll();
+
+        List<MObject> objects = model.getObjects();
 
         // Test data
-        List<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("Task1", "Task1 description"));
+        List<Task> tasks = createTasks(objects);
+        /*tasks.add(new Task("Task1", "Task1 description"));
         tasks.add(new Task("Task2", "Task2 description"));
-        tasks.add(new Task("Task3", "Task3 description"));
+        tasks.add(new Task("Task3", "Task3 description"));*/
 
-        tasks.get(2).setStatus(TaskStatus.COMPLETED);
+        //tasks.get(2).setStatus(TaskStatus.COMPLETED);
 
         // Set up the model which is two lists of Tasks and a filter criteria
         ReadOnlyObjectProperty<ObservableList<Task>> tasksProperty =

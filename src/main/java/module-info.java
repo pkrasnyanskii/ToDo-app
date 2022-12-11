@@ -1,6 +1,7 @@
 module ru.nsu.fit.team_project.plannerscape {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.google.gson;
 
 
     opens ru.nsu.fit.team_project.plannerscape to javafx.fxml;

@@ -1,5 +1,7 @@
 package ru.nsu.fit.team_project.plannerscape;
 
+import java.util.UUID;
+
 public class Task {
     private String name;
     private String description;
