@@ -19,17 +19,45 @@ import javafx.stage.Stage;
 import ru.nsu.fit.team_project.model.CommandExecutor;
 import ru.nsu.fit.team_project.model.MObject;
 import ru.nsu.fit.team_project.model.Model;
+import ru.nsu.fit.team_project.model.commands.AddFieldCommand;
+import ru.nsu.fit.team_project.model.commands.Command;
+import ru.nsu.fit.team_project.model.commands.CreateObjectCommand;
+import ru.nsu.fit.team_project.model.commands.SetFieldValueCommand;
+import ru.nsu.fit.team_project.serialization.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 public class Application extends javafx.application.Application {
+    public void addObjectToModel(Model model, Task task) {
+        UUID objectID = UUID.randomUUID();
+        UUID taskNameFieldID = UUID.randomUUID();
+        UUID taskDescFieldID = UUID.randomUUID();
+
+        Command createTaskObjectCommand = new CreateObjectCommand(objectID, "task");
+        Command addTaskNameFieldCommand = new AddFieldCommand(objectID, taskNameFieldID,"taskName", "String");
+        Command setTaskNameFieldValue = new SetFieldValueCommand(taskNameFieldID, task.getName());
+        Command addTaskDescFieldCommand = new AddFieldCommand(objectID, taskDescFieldID,"taskDesc", "String");
+        Command setTaskDescFieldValue = new SetFieldValueCommand(taskDescFieldID, task.getDescription());
+
+        model.addCommand(createTaskObjectCommand);
+        model.addCommand(addTaskNameFieldCommand);
+        model.addCommand(setTaskNameFieldValue);
+        model.addCommand(addTaskDescFieldCommand);
+        model.addCommand(setTaskDescFieldValue);
+
+        Serializer serializer = new Serializer();
+        serializer.serialize(model);
+    }
+
     public List<Task> createTasks(List<MObject> objects) {
         List<Task> tasks = new ArrayList<>();
         objects.forEach(obj -> tasks.add(new Task(
                 obj.getFieldByName("taskName").getValue().toString(),
-                ""
+                obj.getFieldByName("taskDesc").getValue().toString()
         )));
         return tasks;
     }
@@ -43,13 +71,7 @@ public class Application extends javafx.application.Application {
 
         List<MObject> objects = model.getObjects();
 
-        // Test data
         List<Task> tasks = createTasks(objects);
-        /*tasks.add(new Task("Task1", "Task1 description"));
-        tasks.add(new Task("Task2", "Task2 description"));
-        tasks.add(new Task("Task3", "Task3 description"));*/
-
-        //tasks.get(2).setStatus(TaskStatus.COMPLETED);
 
         // Set up the model which is two lists of Tasks and a filter criteria
         ReadOnlyObjectProperty<ObservableList<Task>> tasksProperty =
@@ -108,6 +130,7 @@ public class Application extends javafx.application.Application {
                 Task newTask = new Task(taskName.getText(), taskDesc.getText());
                 tasksProperty.get().add(newTask);
                 tasks.add(newTask);
+                addObjectToModel(model, newTask);
                 dialog.close();
             };
             createTaskButton.setOnAction(createTaskButtonClick);

@@ -8,6 +8,8 @@ public class CommandExecutor {
     }
 
     public void executeAll() {
-        model.getCommands().forEach(c -> c.execute(model));
+        if (model.getCommands() != null) {
+            model.getCommands().forEach(c -> c.execute(model));
+        }
     }
 }

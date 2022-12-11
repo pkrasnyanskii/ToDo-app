@@ -6,11 +6,12 @@ import ru.nsu.fit.team_project.model.Model;
 import java.util.UUID;
 
 public class CreateObjectCommand extends Command {
-    private final UUID objectID = UUID.randomUUID();
+    private final UUID objectID;
     private final String objectType;
 
-    public CreateObjectCommand(String objectType) {
+    public CreateObjectCommand(UUID objectID, String objectType) {
         super("CreateObjectCommand");
+        this.objectID = objectID;
         this.objectType = objectType;
     }
 
