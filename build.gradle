@@ -16,8 +16,8 @@ ext {
     junitVersion = '5.8.2'
 }
 
-sourceCompatibility = '18'
-targetCompatibility = '18'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -25,7 +25,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'ru.nsu.fit.team_project.plannerscape'
-    mainClass = 'ru.nsu.fit.team_project.plannerscape.HelloApplication'
+    mainClass = 'ru.nsu.fit.team_project.plannerscape.TodoApplication'
 }
 
 javafx {
