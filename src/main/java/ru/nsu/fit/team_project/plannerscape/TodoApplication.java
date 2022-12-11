@@ -9,14 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,9 +23,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class HelloApplication extends Application {
+public class TodoApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //
@@ -62,6 +59,10 @@ public class HelloApplication extends Application {
         hbox.setSpacing(2);
 
         ToggleGroup filterTG = new ToggleGroup();
+
+        Button btn = new Button("Add");
+        HBox bottomControls = new HBox();
+        bottomControls.getChildren().add(btn);
 
         //
         // The toggleHandler action wills set the filter based on the TB selected
@@ -101,7 +102,7 @@ public class HelloApplication extends Application {
         ListView<Task> lv = new ListView<>();
         lv.itemsProperty().bind(viewableTasksProperty);
 
-        vbox.getChildren().addAll(hbox, lv);
+        vbox.getChildren().addAll(hbox, lv, bottomControls);
 
         Scene scene = new Scene(vbox);
 
