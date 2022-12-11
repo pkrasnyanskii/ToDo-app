@@ -33,5 +33,4 @@ public class Model {
     public List<Command> getCommands() {
         return commands;
     }
-
 }
