@@ -5,6 +5,7 @@ import ru.nsu.fit.team_project.serialization.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Model {
     private final List<MObject> objects = new ArrayList<>();
@@ -15,7 +16,7 @@ public class Model {
     }
 
     public Model(List<Command> commands) {
-        this.commands = commands;
+        this.commands = Objects.requireNonNullElseGet(commands, ArrayList::new);
     }
 
     public void addObject(MObject object) {

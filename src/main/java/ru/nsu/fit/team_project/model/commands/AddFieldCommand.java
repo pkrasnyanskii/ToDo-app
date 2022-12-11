@@ -8,12 +8,13 @@ import java.util.UUID;
 
 public class AddFieldCommand extends Command {
     UUID objectID;
-    UUID fieldID = UUID.randomUUID();
+    UUID fieldID;
     String fieldName;
     String fieldType;
 
-    public AddFieldCommand(UUID objectId, String fieldName, String fieldType) {
+    public AddFieldCommand(UUID objectId, UUID fieldID, String fieldName, String fieldType) {
         super("AddFieldCommand");
+        this.fieldID = fieldID;
         this.objectID = objectId;
         this.fieldName = fieldName;
         this.fieldType = fieldType;

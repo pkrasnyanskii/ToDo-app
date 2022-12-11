@@ -1,22 +1,70 @@
 [
   {
-    "objectID": "38cb38bd-f447-451e-8679-ea7a8668aee4",
+    "objectID": "5cfc9808-b3c5-4dc2-aeb8-79b5065e6987",
     "objectType": "task",
-    "commandId": "6c887372-2137-414f-8747-00399f57816c",
+    "commandId": "2be3a2ed-1dcc-4d45-b489-fb4a3ad455c9",
     "commandName": "CreateObjectCommand"
   },
   {
-    "objectID": "38cb38bd-f447-451e-8679-ea7a8668aee4",
-    "fieldID": "3edea46b-4ca2-4929-ae79-bf012c5e43ba",
+    "objectID": "5cfc9808-b3c5-4dc2-aeb8-79b5065e6987",
+    "fieldID": "5396a2e0-b508-4e7c-95bf-b940b41d4c14",
     "fieldName": "taskName",
     "fieldType": "String",
-    "commandId": "a39bae31-91f5-41f8-81a0-30e3686d1136",
+    "commandId": "f928f2db-0fc4-49c7-9a46-d086d6e734f0",
     "commandName": "AddFieldCommand"
   },
   {
-    "fieldID": "3edea46b-4ca2-4929-ae79-bf012c5e43ba",
+    "fieldID": "5396a2e0-b508-4e7c-95bf-b940b41d4c14",
     "value": "Task1",
-    "commandId": "24cbc24f-579d-4696-8a9f-1302516d268d",
+    "commandId": "0d8010f0-be2f-460d-a69d-a692b0183b4f",
+    "commandName": "SetFieldValueCommand"
+  },
+  {
+    "objectID": "5cfc9808-b3c5-4dc2-aeb8-79b5065e6987",
+    "fieldID": "74569438-dcef-4108-8f52-2add879e5863",
+    "fieldName": "taskDesc",
+    "fieldType": "String",
+    "commandId": "d6394d50-53c2-4fcd-816f-3c09bbec5624",
+    "commandName": "AddFieldCommand"
+  },
+  {
+    "fieldID": "74569438-dcef-4108-8f52-2add879e5863",
+    "value": "Task1 description",
+    "commandId": "406cb339-85ab-4853-8945-3c9ba8ed950b",
+    "commandName": "SetFieldValueCommand"
+  },
+  {
+    "objectID": "1f71d02f-f4d3-4730-85e4-5b14f153063e",
+    "objectType": "task",
+    "commandId": "3dfb4550-42f7-44bf-9c5c-c8f9bb2eff45",
+    "commandName": "CreateObjectCommand"
+  },
+  {
+    "objectID": "1f71d02f-f4d3-4730-85e4-5b14f153063e",
+    "fieldID": "18d031c6-6545-450a-b08b-7727e7616b78",
+    "fieldName": "taskName",
+    "fieldType": "String",
+    "commandId": "85d83b2a-3f70-4b7e-9ab9-bdb1b0b56255",
+    "commandName": "AddFieldCommand"
+  },
+  {
+    "fieldID": "18d031c6-6545-450a-b08b-7727e7616b78",
+    "value": "test",
+    "commandId": "46cf503d-a5d2-4c14-8ae9-17001900930c",
+    "commandName": "SetFieldValueCommand"
+  },
+  {
+    "objectID": "1f71d02f-f4d3-4730-85e4-5b14f153063e",
+    "fieldID": "313ebc2a-e8f4-489b-b9ef-e17f2c043edf",
+    "fieldName": "taskDesc",
+    "fieldType": "String",
+    "commandId": "11c80bc8-e263-404a-9745-c0a6fb72308c",
+    "commandName": "AddFieldCommand"
+  },
+  {
+    "fieldID": "313ebc2a-e8f4-489b-b9ef-e17f2c043edf",
+    "value": "desc",
+    "commandId": "eb1f42b6-5d7b-4101-91f9-d4af1da19601",
     "commandName": "SetFieldValueCommand"
   }
 ]
