@@ -27,7 +27,6 @@ import ru.nsu.fit.team_project.serialization.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -38,9 +37,9 @@ public class Application extends javafx.application.Application {
         UUID taskDescFieldID = UUID.randomUUID();
 
         Command createTaskObjectCommand = new CreateObjectCommand(objectID, "task");
-        Command addTaskNameFieldCommand = new AddFieldCommand(objectID, taskNameFieldID,"taskName", "String");
+        Command addTaskNameFieldCommand = new AddFieldCommand(objectID, taskNameFieldID, "taskName", "String");
         Command setTaskNameFieldValue = new SetFieldValueCommand(taskNameFieldID, task.getName());
-        Command addTaskDescFieldCommand = new AddFieldCommand(objectID, taskDescFieldID,"taskDesc", "String");
+        Command addTaskDescFieldCommand = new AddFieldCommand(objectID, taskDescFieldID, "taskDesc", "String");
         Command setTaskDescFieldValue = new SetFieldValueCommand(taskDescFieldID, task.getDescription());
 
         model.addCommand(createTaskObjectCommand);
@@ -173,7 +172,7 @@ public class Application extends javafx.application.Application {
 
     }
 
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
         launch();
     }
 }
