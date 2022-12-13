@@ -6,9 +6,13 @@ public class Task {
     private TaskStatus status;
 
     public Task(String name, String description) {
+        this(name, description, TaskStatus.ACTIVE);
+    }
+
+    public Task(String name, String description, TaskStatus status) {
         this.name = name;
         this.description = description;
-        status = TaskStatus.ACTIVE;
+        this.status = status;
     }
 
     public String getName() {

@@ -28,14 +28,14 @@ public class MObject {
         return fields.stream()
                      .filter(f -> f.getID().equals(fieldID))
                      .findFirst()
-                     .orElseThrow();
+                     .orElse(null);
     }
 
     public Field getFieldByName(String name) {
         return fields.stream()
                      .filter(f -> f.getName().equals(name))
                      .findFirst()
-                     .orElseThrow();
+                     .orElse(null);
     }
 
     public List<Field> getFields() {
