@@ -21,4 +21,6 @@ class ModelObject(
     fun getFieldByName(fieldName: String) =
         fields.stream()
             .filter { f -> f.name == fieldName }
+            .findFirst()
+            .orElseThrow()
 }
