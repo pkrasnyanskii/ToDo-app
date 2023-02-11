@@ -14,6 +14,16 @@ class SetFieldValueCommand(
     }
 
     override fun execute(model: Model) {
-        TODO("Not yet implemented")
+        model.objects
+            .stream()
+            .filter { o -> o.fields
+                    .stream()
+                    .anyMatch { f -> f.id == fieldId }
+            }
+            .findAny()
+            .orElseThrow()
+            .getFieldById(fieldId)
+            .value = value
+
     }
 }
