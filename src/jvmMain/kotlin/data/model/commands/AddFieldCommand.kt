@@ -1,7 +1,8 @@
 package data.model.commands
 
+import data.model.Field
 import data.model.Model
-import java.util.UUID
+import java.util.*
 
 class AddFieldCommand(
     private val objectId: UUID,
@@ -16,6 +17,16 @@ class AddFieldCommand(
     }
 
     override fun execute(model: Model) {
-        TODO("Not yet implemented")
+        model.objects
+            .stream()
+            .filter { o -> o.id == objectId }
+            .findAny()
+            .orElseThrow()
+            .addField(
+                Field(
+                    fieldId,
+                    fieldName
+                )
+            )
     }
 }

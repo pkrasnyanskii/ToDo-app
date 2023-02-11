@@ -1,6 +1,7 @@
 package data.model.commands
 
 import data.model.Model
+import data.model.ModelObject
 import java.util.UUID
 
 class CreateObjectCommand(
@@ -14,6 +15,11 @@ class CreateObjectCommand(
     }
 
     override fun execute(model: Model) {
-        TODO("Not yet implemented")
+        model.addObject(
+            obj = ModelObject(
+                id = objectId,
+                type = objectType
+            )
+        )
     }
 }
