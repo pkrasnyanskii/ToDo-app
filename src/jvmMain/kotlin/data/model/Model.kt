@@ -3,6 +3,7 @@ package data.model
 import data.model.commands.Command
 import data.serialization.Serializer
 
+//TODO: Split commands and objects storage???
 class Model(
 ) {
 
