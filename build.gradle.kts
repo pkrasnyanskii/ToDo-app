@@ -28,6 +28,7 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation("com.google.code.gson:gson:2.10.1")
+                implementation("io.insert-koin:koin-core:3.3.3")
             }
         }
         val jvmTest by getting
