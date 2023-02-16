@@ -1,18 +1,30 @@
 package data.model
 
-import data.model.commands.Command
-import data.serialization.Serializer
+import data.commands.CommandExecutor
+import data.commands.CommandsStorage
+import java.util.*
 
-//TODO: Split commands and objects storage???
 class Model(
+    storage: CommandsStorage
 ) {
 
-    val commands = Serializer().deserialize().toMutableList()
-    val objects = mutableListOf<ModelObject>()
+    val objects: MutableList<ModelObject> = mutableListOf<ModelObject>()
 
-    fun addObject(obj: ModelObject) =
+    init {
+        CommandExecutor(storage, this).executeAll()
+    }
+
+
+    fun addObject(obj: ModelObject) {
         objects.add(obj)
+    }
 
-    fun addCommand(command: Command) =
-        commands.add(command)
+    fun getObjectById(id: UUID): ModelObject =
+        objects.first { obj -> obj.id == id }
+
+    fun getObjectFieldById(id: UUID): Field =
+        objects.first { obj ->
+            obj.fields
+                .any { f -> f.id == id }
+        }.getFieldById(id)
 }

@@ -1,6 +1,6 @@
 package data.model
 
-import java.util.UUID
+import java.util.*
 
 class ModelObject(
     val id: UUID,
@@ -12,13 +12,13 @@ class ModelObject(
     fun addField(field: Field) =
         fields.add(field)
 
-    fun getFieldById(fieldId: UUID) =
+    fun getFieldById(fieldId: UUID): Field =
         fields.stream()
             .filter { f -> f.id == fieldId }
             .findFirst()
             .orElseThrow()
 
-    fun getFieldByName(fieldName: String) =
+    fun getFieldByName(fieldName: String): Field =
         fields.stream()
             .filter { f -> f.name == fieldName }
             .findFirst()
