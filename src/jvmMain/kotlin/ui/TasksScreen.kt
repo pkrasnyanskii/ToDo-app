@@ -1,31 +1,30 @@
 package ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import domain.entity.Task
+import org.koin.java.KoinJavaComponent.inject
 import presentation.TasksViewModel
 
 @Composable
 fun TasksScreen() {
-    //val viewModel = TasksViewModel()
+    val viewModel: TasksViewModel by inject(TasksViewModel::class.java)
 
-    //viewModel.loadData()
+    viewModel.loadData()
 
     Scaffold(
         topBar = { TabRowTopBar() }
     ) {
-        //TasksList(viewModel.state.value)
+        TasksList(viewModel.state.value)
     }
 }
 
@@ -59,10 +58,17 @@ fun TasksList(tasks: List<Task>) {
 
 @Composable
 fun TaskCard(task: Task) {
-    Column(
-        modifier = Modifier.padding(8.dp)
+    Card(
+        modifier = Modifier.fillMaxSize().padding(10.dp),
+        backgroundColor = MaterialTheme.colors.surface,
+        elevation = 4.dp
     ) {
-        Text(task.title)
-        Text(task.description)
+        Column(
+            modifier = Modifier.padding(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(task.title)
+            Text(task.description)
+        }
     }
 }

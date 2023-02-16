@@ -1,4 +1,4 @@
-package data.model.commands
+package data.commands.entity
 
 import data.model.Field
 import data.model.Model
@@ -17,16 +17,9 @@ class AddFieldCommand(
     }
 
     override fun execute(model: Model) {
-        model.objects
-            .stream()
-            .filter { o -> o.id == objectId }
-            .findAny()
-            .orElseThrow()
+        model.getObjectById(objectId)
             .addField(
-                Field(
-                    fieldId,
-                    fieldName
-                )
+                Field(fieldId, fieldName)
             )
     }
 }

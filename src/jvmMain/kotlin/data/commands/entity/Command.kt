@@ -1,7 +1,7 @@
-package data.model.commands
+package data.commands.entity
 
 import data.model.Model
-import java.util.UUID
+import java.util.*
 
 abstract class Command(
     private val commandName: String

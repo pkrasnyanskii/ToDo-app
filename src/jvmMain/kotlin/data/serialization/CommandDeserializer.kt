@@ -3,7 +3,7 @@ package data.serialization
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import data.model.commands.Command
+import data.commands.entity.Command
 import java.lang.reflect.Type
 
 class CommandDeserializer : JsonDeserializer<Command> {
@@ -11,7 +11,7 @@ class CommandDeserializer : JsonDeserializer<Command> {
     private companion object {
 
         private const val COMMAND_NAME_KEY = "commandName"
-        private const val COMMANDS_PACKAGE = "data.model.commands."
+        private const val COMMANDS_PACKAGE = "data.commands.entity."
     }
 
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Command {
