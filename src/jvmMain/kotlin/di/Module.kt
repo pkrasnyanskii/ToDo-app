@@ -11,6 +11,8 @@ import data.serialization.Deserializer
 import data.serialization.Serializer
 import domain.repository.TaskRepository
 import domain.usecase.AddTaskUseCase
+import domain.usecase.GetActiveTasksUseCase
+import domain.usecase.GetCompletedTasksUseCase
 import domain.usecase.GetTasksUseCase
 import org.koin.dsl.module
 import presentation.TasksViewModel
@@ -32,8 +34,10 @@ val domain = module {
     single<TaskRepository> { TaskRepositoryImpl(get(), get()) }
     single { AddTaskUseCase(get()) }
     single { GetTasksUseCase(get()) }
+    single { GetActiveTasksUseCase(get()) }
+    single { GetCompletedTasksUseCase(get()) }
 }
 
 val presentation = module {
-    single { TasksViewModel(get()) }
+    single { TasksViewModel(get(), get(), get()) }
 }
