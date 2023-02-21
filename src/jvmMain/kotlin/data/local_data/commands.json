@@ -29,7 +29,7 @@
   },
   {
     "fieldId": "2ffd04bb-0483-4a8d-bd9d-5e66540c47ce",
-    "value": "123",
+    "value": "ActiveTask",
     "commandId": "f6e52c91-392c-42fc-811f-80403089ccd5",
     "commandName": "SetFieldValueCommand"
   },
@@ -77,7 +77,7 @@
   },
   {
     "fieldId": "a5f499f7-0b02-49d1-8b73-9de36496167a",
-    "value": "123",
+    "value": "ActiveTask",
     "commandId": "cb41c3b0-37b8-4816-839f-b964e226d94f",
     "commandName": "SetFieldValueCommand"
   },
@@ -125,7 +125,7 @@
   },
   {
     "fieldId": "66438804-1a76-4b95-bb76-6c9ba509f7d3",
-    "value": "123",
+    "value": "CompletedTask",
     "commandId": "8be4d095-26a6-41c6-b2f6-6f4cc9c3a9ab",
     "commandName": "SetFieldValueCommand"
   },
@@ -139,7 +139,7 @@
   },
   {
     "fieldId": "f6bcbdab-57f3-4b5e-a7c5-23aad63387dd",
-    "value": "ACTIVE",
+    "value": "COMPLETED",
     "commandId": "86011724-089e-4a5a-8765-7cb1abe494e3",
     "commandName": "SetFieldValueCommand"
   },
@@ -173,7 +173,7 @@
   },
   {
     "fieldId": "c7601078-592f-4275-a898-7fe62813a0b7",
-    "value": "123",
+    "value": "CompletedTask",
     "commandId": "5b8e091e-c1cc-4619-8a88-f3f125d58886",
     "commandName": "SetFieldValueCommand"
   },
@@ -187,7 +187,7 @@
   },
   {
     "fieldId": "b6f6a1c2-eb77-471d-9d6b-15d0a7d0ee31",
-    "value": "ACTIVE",
+    "value": "COMPLETED",
     "commandId": "1ff8f6be-0b46-40f9-9552-accd2a4bd4c9",
     "commandName": "SetFieldValueCommand"
   }
