@@ -3,7 +3,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import di.test
+import di.data
+import di.domain
+import di.presentation
 import org.koin.core.context.GlobalContext.startKoin
 import ui.TasksScreen
 
@@ -18,7 +20,9 @@ fun App() {
 fun main() {
     startKoin {
         modules(
-            test
+            data,
+            domain,
+            presentation
         )
     }
     application {

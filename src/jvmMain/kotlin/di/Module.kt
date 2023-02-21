@@ -37,20 +37,3 @@ val domain = module {
 val presentation = module {
     single { TasksViewModel(get()) }
 }
-
-val test = module {
-    single { GsonBuilder()
-        .registerTypeAdapter(Command::class.java, CommandDeserializer())
-        .setPrettyPrinting()
-        .create()
-    }
-    single { Deserializer(get()) }
-    single { CommandsStorage(get()) }
-    single { Serializer(get(), get()) }
-    single { Model(get()) }
-    single { TaskConverter() }
-    single<TaskRepository> { TaskRepositoryImpl(get(), get()) }
-    single { AddTaskUseCase(get()) }
-    single { GetTasksUseCase(get()) }
-    single { TasksViewModel(get()) }
-}
