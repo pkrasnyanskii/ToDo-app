@@ -1,6 +1,6 @@
 package data.commands.entity
 
-import data.model.Model
+import data.model.ObjectsStorage
 import java.util.*
 
 abstract class Command(
@@ -9,5 +9,5 @@ abstract class Command(
 
     val id: UUID = UUID.randomUUID()
 
-    abstract fun execute(model: Model)
+    abstract fun execute(storage: ObjectsStorage)
 }

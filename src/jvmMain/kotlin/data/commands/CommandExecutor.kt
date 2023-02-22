@@ -1,13 +1,12 @@
 package data.commands
 
-import data.model.Model
+import data.model.ObjectsStorage
 
 class CommandExecutor(
     private val storage: CommandsStorage,
-    private val model: Model
 ) {
 
-    fun executeAll() {
-        storage.commands.forEach { it.execute(model) }
+    fun executeAll(storage: ObjectsStorage) {
+        this.storage.commands.forEach { it.execute(storage) }
     }
 }

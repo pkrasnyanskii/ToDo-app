@@ -1,10 +1,12 @@
 package di
 
 import com.google.gson.GsonBuilder
+import data.commands.CommandExecutor
 import data.commands.CommandsStorage
 import data.commands.entity.Command
 import data.converter.TaskConverter
 import data.model.Model
+import data.model.ObjectsStorage
 import data.repository.TaskRepositoryImpl
 import data.serialization.CommandDeserializer
 import data.serialization.Deserializer
@@ -26,7 +28,9 @@ val data = module {
     single { Deserializer(get()) }
     single { CommandsStorage(get()) }
     single { Serializer(get(), get()) }
-    single { Model(get()) }
+    single { ObjectsStorage() }
+    single { CommandExecutor(get()) }
+    single { Model(get(), get()) }
     single { TaskConverter() }
 }
 

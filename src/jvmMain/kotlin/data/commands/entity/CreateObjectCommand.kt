@@ -1,6 +1,6 @@
 package data.commands.entity
 
-import data.model.Model
+import data.model.ObjectsStorage
 import data.model.ModelObject
 import java.util.*
 
@@ -14,8 +14,8 @@ class CreateObjectCommand(
         private const val COMMAND_NAME = "CreateObject"
     }
 
-    override fun execute(model: Model) {
-        model.addObject(
+    override fun execute(storage: ObjectsStorage) {
+        storage.addObject(
             ModelObject(objectId, objectType)
         )
     }

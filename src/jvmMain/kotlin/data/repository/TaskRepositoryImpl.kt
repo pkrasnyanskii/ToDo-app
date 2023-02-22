@@ -12,16 +12,16 @@ class TaskRepositoryImpl(
 ) : TaskRepository {
 
     override fun getTasks(): List<Task> =
-        model.objects
+        model.storage.objects
             .map { obj -> converter.convert(obj) }
 
     override fun getActiveTasks(): List<Task> =
-        model.objects
+        model.storage.objects
             .map { obj -> converter.convert(obj) }
             .filter { task -> task.status == TaskStatus.ACTIVE }
 
     override fun getCompletedTasks(): List<Task> =
-        model.objects
+        model.storage.objects
             .map { obj -> converter.convert(obj) }
             .filter { task -> task.status == TaskStatus.COMPLETED }
 
