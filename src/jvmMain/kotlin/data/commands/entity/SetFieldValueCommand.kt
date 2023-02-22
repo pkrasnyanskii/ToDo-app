@@ -1,6 +1,6 @@
 package data.commands.entity
 
-import data.model.Model
+import data.model.ObjectsStorage
 import java.util.*
 
 class SetFieldValueCommand(
@@ -13,8 +13,8 @@ class SetFieldValueCommand(
         private const val COMMAND_NAME = "SetFieldValue"
     }
 
-    override fun execute(model: Model) {
-        model.getObjectFieldById(fieldId)
+    override fun execute(storage: ObjectsStorage) {
+        storage.getObjectFieldById(fieldId)
              .value = value
     }
 }

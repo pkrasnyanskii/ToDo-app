@@ -1,7 +1,7 @@
 package data.commands.entity
 
 import data.model.Field
-import data.model.Model
+import data.model.ObjectsStorage
 import java.util.*
 
 class AddFieldCommand(
@@ -16,8 +16,8 @@ class AddFieldCommand(
         private const val COMMAND_NAME = "AddField"
     }
 
-    override fun execute(model: Model) {
-        model.getObjectById(objectId)
+    override fun execute(storage: ObjectsStorage) {
+        storage.getObjectById(objectId)
             .addField(
                 Field(fieldId, fieldName)
             )
