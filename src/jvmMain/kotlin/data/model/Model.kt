@@ -1,13 +1,15 @@
 package data.model
 
 import data.commands.CommandExecutor
+import data.commands.CommandsStorage
 
 class Model(
-    val storage: ObjectsStorage,
+    val commandsStorage: CommandsStorage,
+    val objectsStorage: ObjectsStorage,
     commandExecutor: CommandExecutor,
 ) {
 
     init {
-        commandExecutor.executeAll(storage)
+        commandExecutor.executeAll(objectsStorage)
     }
 }
