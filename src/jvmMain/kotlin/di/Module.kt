@@ -17,7 +17,7 @@ import domain.usecase.GetActiveTasksUseCase
 import domain.usecase.GetCompletedTasksUseCase
 import domain.usecase.GetTasksUseCase
 import org.koin.dsl.module
-import presentation.TasksViewModel
+import presentation.TasksStateHolder
 
 val data = module {
     single { GsonBuilder()
@@ -43,5 +43,5 @@ val domain = module {
 }
 
 val presentation = module {
-    single { TasksViewModel(get(), get(), get()) }
+    single { TasksStateHolder() }
 }

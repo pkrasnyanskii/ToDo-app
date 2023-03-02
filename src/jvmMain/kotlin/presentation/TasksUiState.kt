@@ -8,7 +8,7 @@ sealed interface TasksUiState {
 
     object Loading : TasksUiState
 
-    data class Content(var selectedTabIndex: Int, val tasks: List<Task>) : TasksUiState
+    data class Content(val tasks: List<Task>) : TasksUiState
 
     data class Error(val message: String?) : TasksUiState
 }
