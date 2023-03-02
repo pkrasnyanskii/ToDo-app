@@ -30,7 +30,7 @@ val data = module {
     single { Serializer(get(), get()) }
     single { ObjectsStorage() }
     single { CommandExecutor(get()) }
-    single { Model(get(), get()) }
+    single { Model(get(), get(), get()) }
     single { TaskConverter() }
 }
 

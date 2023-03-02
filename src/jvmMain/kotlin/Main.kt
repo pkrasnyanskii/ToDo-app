@@ -6,7 +6,6 @@ import androidx.compose.ui.window.application
 import di.data
 import di.domain
 import di.presentation
-import domain.usecase.GetActiveTasksUseCase
 import org.koin.core.context.GlobalContext.startKoin
 import ui.TasksScreen
 
@@ -14,7 +13,7 @@ import ui.TasksScreen
 @Preview
 fun App() {
     MaterialTheme {
-        TasksScreen().TasksScreen()
+        TasksScreen()
     }
 }
 
