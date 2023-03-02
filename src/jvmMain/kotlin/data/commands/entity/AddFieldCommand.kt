@@ -13,7 +13,7 @@ class AddFieldCommand(
 
     private companion object {
 
-        private const val COMMAND_NAME = "AddField"
+        private const val COMMAND_NAME = "AddFieldCommand"
     }
 
     override fun execute(storage: ObjectsStorage) {

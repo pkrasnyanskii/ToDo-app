@@ -11,7 +11,7 @@ class CreateObjectCommand(
 
     private companion object {
 
-        private const val COMMAND_NAME = "CreateObject"
+        private const val COMMAND_NAME = "CreateObjectCommand"
     }
 
     override fun execute(storage: ObjectsStorage) {

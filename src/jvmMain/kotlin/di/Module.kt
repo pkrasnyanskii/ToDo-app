@@ -13,6 +13,7 @@ import data.serialization.Deserializer
 import data.serialization.Serializer
 import domain.repository.TaskRepository
 import domain.usecase.AddTaskUseCase
+import domain.usecase.ChangeTaskStatusUseCase
 import domain.usecase.GetTasksUseCase
 import org.koin.dsl.module
 import presentation.TasksStateHolder
@@ -33,9 +34,10 @@ val data = module {
 }
 
 val domain = module {
-    single<TaskRepository> { TaskRepositoryImpl(get(), get()) }
+    single<TaskRepository> { TaskRepositoryImpl(get(), get(), get()) }
     single { AddTaskUseCase(get()) }
     single { GetTasksUseCase(get()) }
+    single { ChangeTaskStatusUseCase(get()) }
 }
 
 val presentation = module {

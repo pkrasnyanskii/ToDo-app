@@ -10,7 +10,7 @@ class SetFieldValueCommand(
 
     private companion object {
 
-        private const val COMMAND_NAME = "SetFieldValue"
+        private const val COMMAND_NAME = "SetFieldValueCommand"
     }
 
     override fun execute(storage: ObjectsStorage) {

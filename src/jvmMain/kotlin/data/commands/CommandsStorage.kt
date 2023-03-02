@@ -8,6 +8,7 @@ class CommandsStorage(
 ) {
     val commands = deserializer.deserialize().toMutableList()
 
-    fun addCommand(command: Command) =
+    fun addCommand(command: Command) {
         commands.add(command)
+    }
 }
