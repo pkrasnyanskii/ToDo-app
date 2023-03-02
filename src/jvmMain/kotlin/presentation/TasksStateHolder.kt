@@ -5,12 +5,14 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import domain.entity.Task
 import domain.entity.TaskStatus
+import domain.usecase.ChangeTaskStatusUseCase
 import domain.usecase.GetTasksUseCase
-import org.koin.java.KoinJavaComponent
+import org.koin.java.KoinJavaComponent.inject
 import java.util.UUID
 
 class TasksStateHolder {
-    val getTasksUseCase: GetTasksUseCase by KoinJavaComponent.inject(GetTasksUseCase::class.java)
+    val getTasksUseCase: GetTasksUseCase by inject(GetTasksUseCase::class.java)
+    val changeTaskStatusUseCase: ChangeTaskStatusUseCase by inject(ChangeTaskStatusUseCase::class.java)
 
     private val _state: MutableState<TasksUiState> = mutableStateOf(TasksUiState.Initial)
     val state: State<TasksUiState> = _state
@@ -21,6 +23,7 @@ class TasksStateHolder {
 
     fun onStatusChange(id: UUID, status: TaskStatus) =
         setState {
+            changeTaskStatusUseCase(id, status)
             updateTask(id = id) { it.copy(status = status) }
         }
 

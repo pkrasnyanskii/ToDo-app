@@ -6,6 +6,7 @@ import data.commands.entity.CreateObjectCommand
 import data.commands.entity.SetFieldValueCommand
 import data.converter.TaskConverter
 import data.model.Model
+import data.serialization.Serializer
 import domain.entity.Task
 import domain.entity.TaskStatus
 import domain.repository.TaskRepository
@@ -13,7 +14,8 @@ import java.util.UUID
 
 class TaskRepositoryImpl(
     private val model: Model,
-    private val converter: TaskConverter
+    private val converter: TaskConverter,
+    private val serializer: Serializer
 ) : TaskRepository {
 
     override fun getTasks(): List<Task> =
@@ -47,5 +49,14 @@ class TaskRepositoryImpl(
         )
 
         model.commandsStorage.commands.addAll(createTaskCommands)
+    }
+
+    override fun changeTaskStatus(id: UUID, status: TaskStatus) {
+        val taskStatusFieldId = model.objectsStorage
+            .getObjectById(id)
+            .getFieldByName("taskStatus")
+            .id
+        model.commandsStorage.addCommand(SetFieldValueCommand(taskStatusFieldId, status))
+        serializer.serialize()
     }
 }
