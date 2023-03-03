@@ -1,9 +1,6 @@
 package ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -28,10 +25,20 @@ fun TasksScreen() {
     Scaffold(
         topBar = { TopAppBar(title = { Text(text = "Task List") }) }
     ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
+                .padding(8.dp),
+        ) {
+            TasksList(
+                tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
+                onStatusChange = stateHolder::onStatusChange)
 
-        TasksList(
-            tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
-            onStatusChange = stateHolder::onStatusChange)
+            ExtendedFloatingActionButton(
+                text = { Text("Add Task") },
+                onClick = {  },
+                modifier = Modifier.padding(10.dp).align(Alignment.End)
+            )
+        }
     }
 }
 
