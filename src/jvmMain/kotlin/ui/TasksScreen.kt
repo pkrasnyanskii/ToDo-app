@@ -5,6 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,12 +33,13 @@ fun TasksScreen() {
         ) {
             TasksList(
                 tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
-                onStatusChange = stateHolder::onStatusChange)
+                onStatusChange = stateHolder::onStatusChange
+            )
 
-            ExtendedFloatingActionButton(
-                text = { Text("Add Task") },
-                onClick = {  },
-                modifier = Modifier.padding(10.dp).align(Alignment.End)
+            Input(
+                text = "",
+                onTextChanged = {},
+                onAddClicked = {}
             )
         }
     }
@@ -50,13 +53,17 @@ fun TasksList(
     val listState = rememberLazyListState()
 
     LazyColumn(state = listState) {
-        items(tasks) {task ->
+        items(tasks) { task ->
             TaskCard(
                 task = task,
-                onStatusChange = { onStatusChange(task.id, when(it) {
-                    true -> TaskStatus.COMPLETED
-                    false -> TaskStatus.ACTIVE
-                }) }
+                onStatusChange = {
+                    onStatusChange(
+                        task.id, when (it) {
+                            true -> TaskStatus.COMPLETED
+                            false -> TaskStatus.ACTIVE
+                        }
+                    )
+                }
             )
         }
     }
@@ -68,7 +75,8 @@ fun TaskCard(
     onStatusChange: (Boolean) -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxSize().padding(10.dp),
+        modifier = Modifier.fillMaxSize()
+            .padding(10.dp),
         backgroundColor = MaterialTheme.colors.surface,
         elevation = 4.dp
     ) {
@@ -86,6 +94,31 @@ fun TaskCard(
                 Text(task.title)
                 Text(task.description)
             }
+        }
+    }
+}
+
+@Composable
+private fun Input(
+    text: String,
+    onTextChanged: (String) -> Unit,
+    onAddClicked: () -> Unit
+) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
+        OutlinedTextField(
+            value = text,
+            onValueChange = onTextChanged,
+            modifier = Modifier.weight(weight = 1F),
+            label = { Text(text = "Add a task") }
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        IconButton(onClick = onAddClicked) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = null
+            )
         }
     }
 }
