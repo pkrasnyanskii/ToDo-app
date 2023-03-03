@@ -14,4 +14,8 @@ class CommandExecutor(
     fun executeList(commands: List<Command>, objectStorage: ObjectsStorage) {
         commands.forEach { it.execute(objectStorage) }
     }
+
+    fun execute(command: Command, objectStorage: ObjectsStorage) {
+        command.execute(objectStorage)
+    }
 }
