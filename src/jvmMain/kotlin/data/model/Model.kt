@@ -6,7 +6,7 @@ import data.commands.CommandsStorage
 class Model(
     val commandsStorage: CommandsStorage,
     val objectsStorage: ObjectsStorage,
-    commandExecutor: CommandExecutor,
+    val commandExecutor: CommandExecutor,
 ) {
 
     init {

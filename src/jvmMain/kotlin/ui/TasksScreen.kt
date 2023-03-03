@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -26,11 +27,13 @@ fun TasksScreen() {
 
     Scaffold(
         topBar = { TopAppBar(title = { Text(text = "Task List") }) },
-        bottomBar = { Input(
-            text = (stateHolder.state.value as TasksUiState.Content).inputText,
-            onTextChanged = stateHolder::onInputTextChanged,
-            onAddClicked = stateHolder::onAddTaskClicked
-        ) }
+        bottomBar = {
+            Input(
+                text = (stateHolder.state.value as TasksUiState.Content).inputText,
+                onTextChanged = stateHolder::onInputTextChanged,
+                onAddClicked = stateHolder::onAddTaskClicked
+            )
+        }
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -38,7 +41,8 @@ fun TasksScreen() {
         ) {
             TasksList(
                 tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
-                onStatusChange = stateHolder::onStatusChanged
+                onStatusChange = stateHolder::onStatusChanged,
+                onDeleteClicked = stateHolder::onTaskDeleteClicked
             )
         }
     }
@@ -47,7 +51,8 @@ fun TasksScreen() {
 @Composable
 fun TasksList(
     tasks: List<Task>,
-    onStatusChange: (id: UUID, status: TaskStatus) -> Unit
+    onStatusChange: (id: UUID, status: TaskStatus) -> Unit,
+    onDeleteClicked: (id: UUID) -> Unit
 ) {
     val listState = rememberLazyListState()
 
@@ -62,7 +67,8 @@ fun TasksList(
                             false -> TaskStatus.ACTIVE
                         }
                     )
-                }
+                },
+                onDeleteClicked = { onDeleteClicked(task.id) }
             )
         }
     }
@@ -71,7 +77,8 @@ fun TasksList(
 @Composable
 fun TaskCard(
     task: Task,
-    onStatusChange: (Boolean) -> Unit
+    onStatusChange: (Boolean) -> Unit,
+    onDeleteClicked: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxSize()
@@ -86,12 +93,23 @@ fun TaskCard(
                 onCheckedChange = onStatusChange,
             )
 
+            Spacer(modifier = Modifier.width(8.dp))
+
             Column(
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.padding(8.dp).weight(1F),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(task.title)
                 Text(task.description)
+            }
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            IconButton(onClick = onDeleteClicked) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = null
+                )
             }
         }
     }

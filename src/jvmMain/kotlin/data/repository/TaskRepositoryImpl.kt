@@ -40,6 +40,7 @@ class TaskRepositoryImpl(
         )
 
         model.commandsStorage.commands.addAll(createTaskCommands)
+        model.commandExecutor.executeList(createTaskCommands, model.objectsStorage)
         serializer.serialize()
     }
 

@@ -256,5 +256,125 @@
     "value": "COMPLETED",
     "commandName": "SetFieldValueCommand",
     "id": -1
+  },
+  {
+    "fieldId": "029d9bbc-5c78-4001-8f56-4a36d7a69669",
+    "value": "DELETED",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "objectId": "944a977b-ce5c-4731-bb5e-d1a7933c3d62",
+    "objectType": "Task",
+    "commandName": "CreateObjectCommand",
+    "id": -1
+  },
+  {
+    "objectId": "944a977b-ce5c-4731-bb5e-d1a7933c3d62",
+    "fieldId": "f5d655fd-d526-4f23-b402-79c8ad84c5ca",
+    "fieldName": "taskName",
+    "fieldType": "String",
+    "commandName": "AddFieldCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "f5d655fd-d526-4f23-b402-79c8ad84c5ca",
+    "value": "task [deprecated field]",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "objectId": "944a977b-ce5c-4731-bb5e-d1a7933c3d62",
+    "fieldId": "d362add1-5e61-43b1-bcde-82cd68aa7e50",
+    "fieldName": "taskDesc",
+    "fieldType": "String",
+    "commandName": "AddFieldCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "d362add1-5e61-43b1-bcde-82cd68aa7e50",
+    "value": "task to delete",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "objectId": "944a977b-ce5c-4731-bb5e-d1a7933c3d62",
+    "fieldId": "c6c8c79e-4d9c-4367-8ff7-8e5b55f24d05",
+    "fieldName": "taskStatus",
+    "fieldType": "String",
+    "commandName": "AddFieldCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "c6c8c79e-4d9c-4367-8ff7-8e5b55f24d05",
+    "value": "ACTIVE",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "c6c8c79e-4d9c-4367-8ff7-8e5b55f24d05",
+    "value": "DELETED",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "objectId": "e75e5566-ba87-417d-8ec5-33eeaeebc4cc",
+    "objectType": "Task",
+    "commandName": "CreateObjectCommand",
+    "id": -1
+  },
+  {
+    "objectId": "e75e5566-ba87-417d-8ec5-33eeaeebc4cc",
+    "fieldId": "60c359d3-bdd5-49d5-bdda-1ea06dd7e6fd",
+    "fieldName": "taskName",
+    "fieldType": "String",
+    "commandName": "AddFieldCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "60c359d3-bdd5-49d5-bdda-1ea06dd7e6fd",
+    "value": "task [deprecated field]",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "objectId": "e75e5566-ba87-417d-8ec5-33eeaeebc4cc",
+    "fieldId": "aca62d93-8fd3-4d0f-8c82-ccc8bcacf16c",
+    "fieldName": "taskDesc",
+    "fieldType": "String",
+    "commandName": "AddFieldCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "aca62d93-8fd3-4d0f-8c82-ccc8bcacf16c",
+    "value": "zhoskiy test",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "objectId": "e75e5566-ba87-417d-8ec5-33eeaeebc4cc",
+    "fieldId": "da0b2e65-49f0-4569-b84a-fd3e38c2be5b",
+    "fieldName": "taskStatus",
+    "fieldType": "String",
+    "commandName": "AddFieldCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "da0b2e65-49f0-4569-b84a-fd3e38c2be5b",
+    "value": "ACTIVE",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "da0b2e65-49f0-4569-b84a-fd3e38c2be5b",
+    "value": "COMPLETED",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
+  },
+  {
+    "fieldId": "da0b2e65-49f0-4569-b84a-fd3e38c2be5b",
+    "value": "DELETED",
+    "commandName": "SetFieldValueCommand",
+    "id": -1
   }
 ]
