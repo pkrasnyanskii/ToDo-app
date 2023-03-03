@@ -25,7 +25,12 @@ fun TasksScreen() {
     stateHolder.loadData()
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = "Task List") }) }
+        topBar = { TopAppBar(title = { Text(text = "Task List") }) },
+        bottomBar = { Input(
+            text = (stateHolder.state.value as TasksUiState.Content).inputText,
+            onTextChanged = stateHolder::onInputTextChanged,
+            onAddClicked = stateHolder::onAddTaskClicked
+        ) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -33,13 +38,7 @@ fun TasksScreen() {
         ) {
             TasksList(
                 tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
-                onStatusChange = stateHolder::onStatusChange
-            )
-
-            Input(
-                text = "",
-                onTextChanged = {},
-                onAddClicked = {}
+                onStatusChange = stateHolder::onStatusChanged
             )
         }
     }
