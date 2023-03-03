@@ -27,6 +27,10 @@ class TasksStateHolder {
             updateTask(id = id) { it.copy(status = status) }
         }
 
+    fun onAddTaskClicked() {
+
+    }
+
     private fun TasksUiState.Content.updateTask(id: UUID, transformer: (Task) -> Task): TasksUiState =
         copy(tasks = tasks.updateTask(id = id, transformer = transformer))
 
