@@ -8,11 +8,9 @@ interface TaskRepository {
 
     fun getTasks(): List<Task>
 
-    fun getActiveTasks(): List<Task>
-
-    fun getCompletedTasks(): List<Task>
-
     fun addTask(task: Task)
 
     fun changeTaskStatus(id: UUID, status: TaskStatus)
+
+    fun deleteTask(id: UUID)
 }

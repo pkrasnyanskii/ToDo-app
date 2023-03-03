@@ -1,5 +1,5 @@
 package domain.entity
 
 enum class TaskStatus {
-    ACTIVE, COMPLETED
+    ACTIVE, COMPLETED, DELETED
 }

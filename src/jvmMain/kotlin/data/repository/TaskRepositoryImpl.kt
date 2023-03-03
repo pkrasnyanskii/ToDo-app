@@ -21,16 +21,7 @@ class TaskRepositoryImpl(
     override fun getTasks(): List<Task> =
         model.objectsStorage.objects
             .map { obj -> converter.convert(obj) }
-
-    override fun getActiveTasks(): List<Task> =
-        model.objectsStorage.objects
-            .map { obj -> converter.convert(obj) }
-            .filter { task -> task.status == TaskStatus.ACTIVE }
-
-    override fun getCompletedTasks(): List<Task> =
-        model.objectsStorage.objects
-            .map { obj -> converter.convert(obj) }
-            .filter { task -> task.status == TaskStatus.COMPLETED }
+            .filter { task -> task.status != TaskStatus.DELETED }
 
     override fun addTask(task: Task) {
         val taskObjectId = task.id
@@ -58,6 +49,15 @@ class TaskRepositoryImpl(
             .getFieldByName("taskStatus")
             .id
         model.commandsStorage.addCommand(SetFieldValueCommand(taskStatusFieldId, status))
+        serializer.serialize()
+    }
+
+    override fun deleteTask(id: UUID) {
+        val taskStatusFieldId = model.objectsStorage
+            .getObjectById(id)
+            .getFieldByName("taskStatus")
+            .id
+        model.commandsStorage.addCommand(SetFieldValueCommand(taskStatusFieldId, TaskStatus.DELETED))
         serializer.serialize()
     }
 }
