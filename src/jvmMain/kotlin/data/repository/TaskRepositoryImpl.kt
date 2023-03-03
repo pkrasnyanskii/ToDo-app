@@ -49,7 +49,9 @@ class TaskRepositoryImpl(
             .getObjectById(id)
             .getFieldByName("taskStatus")
             .id
-        model.commandsStorage.addCommand(SetFieldValueCommand(taskStatusFieldId, status))
+        val setFieldValueCommand = SetFieldValueCommand(taskStatusFieldId, status)
+        model.commandsStorage.addCommand(setFieldValueCommand)
+        model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
         serializer.serialize()
     }
 
@@ -58,7 +60,9 @@ class TaskRepositoryImpl(
             .getObjectById(id)
             .getFieldByName("taskStatus")
             .id
-        model.commandsStorage.addCommand(SetFieldValueCommand(taskStatusFieldId, TaskStatus.DELETED))
+        val setFieldValueCommand = SetFieldValueCommand(taskStatusFieldId, TaskStatus.DELETED)
+        model.commandsStorage.addCommand(setFieldValueCommand)
+        model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
         serializer.serialize()
     }
 }
