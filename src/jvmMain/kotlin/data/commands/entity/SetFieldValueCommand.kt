@@ -5,7 +5,7 @@ import java.util.*
 
 class SetFieldValueCommand(
     private val fieldId: UUID,
-    private val value: Any
+    private val fieldValue: Any
 ) : Command(COMMAND_NAME) {
 
     private companion object {
@@ -15,6 +15,6 @@ class SetFieldValueCommand(
 
     override fun execute(storage: ObjectsStorage) {
         storage.getObjectFieldById(fieldId)
-             .value = value
+             .value = fieldValue
     }
 }
