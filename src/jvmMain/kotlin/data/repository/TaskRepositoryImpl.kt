@@ -33,7 +33,7 @@ class TaskRepositoryImpl(
             .filter { task -> task.status == TaskStatus.COMPLETED }
 
     override fun addTask(task: Task) {
-        val taskObjectId = UUID.randomUUID()
+        val taskObjectId = task.id
         val taskNameFieldId = UUID.randomUUID()
         val taskDescriptionFieldId = UUID.randomUUID()
         val taskStatusFieldId = UUID.randomUUID()
@@ -49,6 +49,7 @@ class TaskRepositoryImpl(
         )
 
         model.commandsStorage.commands.addAll(createTaskCommands)
+        serializer.serialize()
     }
 
     override fun changeTaskStatus(id: UUID, status: TaskStatus) {
