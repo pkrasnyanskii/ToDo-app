@@ -1,5 +1,6 @@
 package ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -12,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import domain.entity.Task
 import domain.entity.TaskStatus
 import presentation.TasksStateHolder
 import presentation.TasksUiState
-import java.util.UUID
+import java.util.*
 
 @Composable
 fun TasksScreen() {
@@ -26,9 +29,25 @@ fun TasksScreen() {
     stateHolder.loadData()
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = "Task List") }) },
+        topBar = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.background(MaterialTheme.colors.primary)
+                    .padding(horizontal = 20.dp)
+            ) {
+                Text(
+                    text = "Task List",
+                    modifier = Modifier.weight(0.5F),
+                    color = MaterialTheme.colors.onPrimary
+                )
+                NetworkButtons()
+            }
+
+
+        },
         bottomBar = {
             Input(
+                modifier = Modifier.padding(20.dp),
                 text = (stateHolder.state.value as TasksUiState.Content).inputText,
                 onTextChanged = stateHolder::onInputTextChanged,
                 onAddClicked = stateHolder::onAddTaskClicked
@@ -37,9 +56,12 @@ fun TasksScreen() {
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
-                .padding(8.dp),
+                .padding(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             TasksList(
+                modifier = Modifier.padding(bottom = 8.dp)
+                    .fillMaxSize(),
                 tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
                 onStatusChange = stateHolder::onStatusChanged,
                 onDeleteClicked = stateHolder::onTaskDeleteClicked
@@ -49,7 +71,41 @@ fun TasksScreen() {
 }
 
 @Composable
+fun WhiteButton(
+    onClick: () -> Unit,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Button(
+        content = content,
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.White,
+            contentColor = Color.Black
+        )
+    )
+}
+
+@Composable
+fun NetworkButtons() {
+    Row(
+        horizontalArrangement = Arrangement.End,
+        modifier = Modifier.fillMaxWidth(0.5F)
+    ) {
+        WhiteButton(onClick = { }) {
+            Text(text = "Send Tasks")
+        }
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        WhiteButton(onClick = { }) {
+            Text(text = "Receive Tasks")
+        }
+    }
+}
+
+@Composable
 fun TasksList(
+    modifier: Modifier,
     tasks: List<Task>,
     onStatusChange: (id: UUID, status: TaskStatus) -> Unit,
     onDeleteClicked: (id: UUID) -> Unit
@@ -59,6 +115,7 @@ fun TasksList(
     LazyColumn(state = listState) {
         items(tasks) { task ->
             TaskCard(
+                modifier = modifier,
                 task = task,
                 onStatusChange = {
                     onStatusChange(
@@ -76,13 +133,13 @@ fun TasksList(
 
 @Composable
 fun TaskCard(
+    modifier: Modifier,
     task: Task,
     onStatusChange: (Boolean) -> Unit,
     onDeleteClicked: () -> Unit
 ) {
     Card(
-        modifier = Modifier.fillMaxSize()
-            .padding(10.dp),
+        modifier = modifier,
         backgroundColor = MaterialTheme.colors.surface,
         elevation = 4.dp
     ) {
@@ -95,13 +152,13 @@ fun TaskCard(
 
             Spacer(modifier = Modifier.width(8.dp))
 
-            Column(
-                modifier = Modifier.padding(8.dp).weight(1F),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(task.title)
-                Text(task.description)
-            }
+            Text(
+                text = task.description,
+                modifier = Modifier.weight(1F)
+                    .align(Alignment.CenterVertically),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
 
             Spacer(modifier = Modifier.width(8.dp))
 
@@ -117,11 +174,15 @@ fun TaskCard(
 
 @Composable
 private fun Input(
+    modifier: Modifier,
     text: String,
     onTextChanged: (String) -> Unit,
     onAddClicked: () -> Unit
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+    ) {
         OutlinedTextField(
             value = text,
             onValueChange = onTextChanged,
