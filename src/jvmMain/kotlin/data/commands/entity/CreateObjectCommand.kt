@@ -11,8 +11,13 @@ class CreateObjectCommand(
 ) : Command(CommandType.CREATE_OBJECT_COMMAND) {
 
     override fun execute(storage: ObjectsStorage) {
-        storage.addObject(
-            ModelObject(objectId, objectType)
-        )
+        if (!storage.objects
+                .stream()
+                .filter { obj -> obj.id == objectId }
+                .findFirst()
+                .isPresent
+        ) {
+            storage.addObject(ModelObject(objectId, objectType))
+        }
     }
 }
