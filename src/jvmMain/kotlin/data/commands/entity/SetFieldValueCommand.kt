@@ -6,12 +6,7 @@ import java.util.*
 class SetFieldValueCommand(
     private val fieldId: UUID,
     private val fieldValue: Any
-) : Command(COMMAND_NAME) {
-
-    private companion object {
-
-        private const val COMMAND_NAME = "SetFieldValueCommand"
-    }
+) : Command(CommandType.SET_FIELD_VALUE) {
 
     override fun execute(storage: ObjectsStorage) {
         storage.getObjectFieldById(fieldId)
