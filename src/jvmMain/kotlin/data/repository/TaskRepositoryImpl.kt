@@ -25,16 +25,13 @@ class TaskRepositoryImpl(
 
     override fun addTask(task: Task) {
         val taskObjectId = task.id
-        val taskNameFieldId = UUID.randomUUID()
-        val taskDescriptionFieldId = UUID.randomUUID()
+        val taskTextFieldId = UUID.randomUUID()
         val taskStatusFieldId = UUID.randomUUID()
 
         val createTaskCommands: List<Command> = listOf(
             CreateObjectCommand(taskObjectId, "Task"),
-            AddFieldCommand(taskObjectId, taskNameFieldId, "taskName", "String"),
-            SetFieldValueCommand(taskNameFieldId, task.title),
-            AddFieldCommand(taskObjectId, taskDescriptionFieldId, "taskDesc", "String"),
-            SetFieldValueCommand(taskDescriptionFieldId, task.description),
+            AddFieldCommand(taskObjectId, taskTextFieldId, "taskText", "String"),
+            SetFieldValueCommand(taskTextFieldId, task.text),
             AddFieldCommand(taskObjectId, taskStatusFieldId, "taskStatus", "String"),
             SetFieldValueCommand(taskStatusFieldId, task.status)
         )

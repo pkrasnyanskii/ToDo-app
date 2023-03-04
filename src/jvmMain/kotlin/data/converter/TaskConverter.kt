@@ -9,8 +9,7 @@ class TaskConverter {
     fun convert(from: ModelObject): Task =
         Task(
             id = from.id,
-            title = from.getFieldByName("taskName").value.toString(),
-            description = from.getFieldByName("taskDesc").value.toString(),
+            text = from.getFieldByName("taskText").value.toString(),
             status = TaskStatus.valueOf(from.getFieldByName("taskStatus").value.toString())
         )
 }
