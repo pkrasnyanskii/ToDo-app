@@ -8,7 +8,8 @@ class AddFieldCommand(
     private val objectId: UUID,
     private val fieldId: UUID,
     private val fieldName: String,
-    private val fieldType: String
+    private val fieldType: String,
+    override val id: Int = Companion.DEFAULT_ID
 ) : Command(CommandType.ADD_FIELD_COMMAND) {
 
     override fun execute(storage: ObjectsStorage) {
