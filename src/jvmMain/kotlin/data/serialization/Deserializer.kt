@@ -18,17 +18,15 @@ class Deserializer(
     }
 
     fun deserialize(): List<Command> {
-        var commands: List<Command> = listOf()
 
         try {
             JsonReader(FileReader(FILE_PATH)).use { reader ->
                 val commandsListType = object : TypeToken<List<Command>>() {}.type
-                commands = gson.fromJson<List<Command>>(reader, commandsListType)
+                return gson.fromJson(reader, commandsListType) ?: listOf()
             }
         } catch (e: FileNotFoundException) {
             File(FILE_PATH).createNewFile()
+            return listOf()
         }
-
-        return commands
     }
 }
