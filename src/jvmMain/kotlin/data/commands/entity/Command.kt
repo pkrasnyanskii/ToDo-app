@@ -3,7 +3,7 @@ package data.commands.entity
 import data.model.ObjectsStorage
 
 abstract class Command(
-    private val commandName: String
+    private val commandType: CommandType
 ) {
 
     val id: Int = -1
