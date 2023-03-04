@@ -40,7 +40,7 @@ fun TasksScreen() {
                     modifier = Modifier.weight(0.5F),
                     color = MaterialTheme.colors.onPrimary
                 )
-                NetworkButtons()
+                NetworkButtons(stateHolder::onReceiveDataButtonClicked)
             }
 
 
@@ -86,7 +86,9 @@ fun WhiteButton(
 }
 
 @Composable
-fun NetworkButtons() {
+fun NetworkButtons(
+    onReceiveButtonClicked: () -> Unit
+) {
     Row(
         horizontalArrangement = Arrangement.End,
         modifier = Modifier.fillMaxWidth(0.5F)
@@ -97,7 +99,7 @@ fun NetworkButtons() {
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        WhiteButton(onClick = { }) {
+        WhiteButton(onClick = onReceiveButtonClicked) {
             Text(text = "Receive Tasks")
         }
     }
@@ -153,7 +155,7 @@ fun TaskCard(
             Spacer(modifier = Modifier.width(8.dp))
 
             Text(
-                text = task.description,
+                text = task.text,
                 modifier = Modifier.weight(1F)
                     .align(Alignment.CenterVertically),
                 maxLines = 1,

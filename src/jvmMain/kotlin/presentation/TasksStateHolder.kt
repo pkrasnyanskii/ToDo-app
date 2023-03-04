@@ -5,10 +5,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import domain.entity.Task
 import domain.entity.TaskStatus
-import domain.usecase.AddTaskUseCase
-import domain.usecase.ChangeTaskStatusUseCase
-import domain.usecase.DeleteTaskUseCase
-import domain.usecase.GetTasksUseCase
+import domain.usecase.*
+import kotlinx.coroutines.runBlocking
 import org.koin.java.KoinJavaComponent.inject
 import java.util.UUID
 
@@ -17,6 +15,7 @@ class TasksStateHolder {
     val changeTaskStatusUseCase: ChangeTaskStatusUseCase by inject(ChangeTaskStatusUseCase::class.java)
     val addTaskUseCase: AddTaskUseCase by inject(AddTaskUseCase::class.java)
     val deleteTaskUseCase: DeleteTaskUseCase by inject(DeleteTaskUseCase::class.java)
+    val getDataUseCase: GetDataUseCase by inject(GetDataUseCase::class.java)
 
     private val _state: MutableState<TasksUiState> = mutableStateOf(TasksUiState.Initial)
     val state: State<TasksUiState> = _state
@@ -35,8 +34,7 @@ class TasksStateHolder {
         setState {
             val newTask = Task(
                 id = UUID.randomUUID(),
-                title = "task [deprecated field]",
-                description = inputText,
+                text = inputText,
                 status = TaskStatus.ACTIVE
             )
             addTaskUseCase(task = newTask)
@@ -53,6 +51,15 @@ class TasksStateHolder {
 
     fun onInputTextChanged(text: String) {
         setState { copy(inputText = text) }
+    }
+    
+    fun onReceiveDataButtonClicked() {
+        runBlocking {
+            getDataUseCase()
+        }
+        setState {
+            copy(tasks = getTasksUseCase(), inputText = "")
+        }
     }
 
     private fun TasksUiState.Content.updateTask(id: UUID, transformer: (Task) -> Task): TasksUiState =
