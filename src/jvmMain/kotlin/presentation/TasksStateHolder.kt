@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import domain.entity.Task
 import domain.entity.TaskStatus
 import domain.usecase.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.koin.java.KoinJavaComponent.inject
 import java.util.UUID
 
@@ -52,13 +52,15 @@ class TasksStateHolder {
     fun onInputTextChanged(text: String) {
         setState { copy(inputText = text) }
     }
-    
+
+    @OptIn(DelicateCoroutinesApi::class)
     fun onReceiveDataButtonClicked() {
-        runBlocking {
+        GlobalScope.launch(Dispatchers.Default) {
             getDataUseCase()
-        }
-        setState {
-            copy(tasks = getTasksUseCase(), inputText = "")
+
+            setState {
+                copy(tasks = getTasksUseCase(), inputText = "")
+            }
         }
     }
 
