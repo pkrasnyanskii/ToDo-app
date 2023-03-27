@@ -23,6 +23,6 @@ class CommandRepositoryImpl(
     }
 
     override suspend fun sendList() {
-        commandsApi.sendCommands()
+        commandsApi.sendCommands(model.commandsStorage.commands)
     }
 }

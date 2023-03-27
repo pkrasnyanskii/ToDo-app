@@ -15,7 +15,9 @@ class TasksStateHolder {
     val changeTaskStatusUseCase: ChangeTaskStatusUseCase by inject(ChangeTaskStatusUseCase::class.java)
     val addTaskUseCase: AddTaskUseCase by inject(AddTaskUseCase::class.java)
     val deleteTaskUseCase: DeleteTaskUseCase by inject(DeleteTaskUseCase::class.java)
+
     val getDataUseCase: GetDataUseCase by inject(GetDataUseCase::class.java)
+    val sendDataUseCase: SendDataUseCase by inject(SendDataUseCase::class.java)
 
     private val _state: MutableState<TasksUiState> = mutableStateOf(TasksUiState.Initial)
     val state: State<TasksUiState> = _state
@@ -61,6 +63,13 @@ class TasksStateHolder {
             setState {
                 copy(tasks = getTasksUseCase(), inputText = "")
             }
+        }
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    fun onSendDataButtonClicked() {
+        GlobalScope.launch(Dispatchers.Default) {
+            sendDataUseCase()
         }
     }
 

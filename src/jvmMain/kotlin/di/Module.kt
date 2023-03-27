@@ -86,6 +86,7 @@ val domain = module {
     single { DeleteTaskUseCase(get()) }
     single<CommandRepository> { CommandRepositoryImpl(get(), get(), get(), get()) }
     single { GetDataUseCase(get()) }
+    single { SendDataUseCase(get()) }
 }
 
 val presentation = module {

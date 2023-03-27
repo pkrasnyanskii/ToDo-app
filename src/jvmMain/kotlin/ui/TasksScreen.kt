@@ -40,7 +40,10 @@ fun TasksScreen() {
                     modifier = Modifier.weight(0.5F),
                     color = MaterialTheme.colors.onPrimary
                 )
-                NetworkButtons(stateHolder::onReceiveDataButtonClicked)
+                NetworkButtons(
+                    stateHolder::onReceiveDataButtonClicked,
+                    stateHolder::onSendDataButtonClicked
+                )
             }
 
 
@@ -87,13 +90,14 @@ fun WhiteButton(
 
 @Composable
 fun NetworkButtons(
-    onReceiveButtonClicked: () -> Unit
+    onReceiveButtonClicked: () -> Unit,
+    onSendButtonClicked: () -> Unit
 ) {
     Row(
         horizontalArrangement = Arrangement.End,
         modifier = Modifier.fillMaxWidth(0.5F)
     ) {
-        WhiteButton(onClick = { }) {
+        WhiteButton(onClick = onSendButtonClicked) {
             Text(text = "Send Tasks")
         }
 
