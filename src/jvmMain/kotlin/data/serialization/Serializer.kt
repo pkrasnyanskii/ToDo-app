@@ -11,7 +11,7 @@ class Serializer(
 
     private companion object {
 
-        private const val FILE_PATH = "src/jvmMain/kotlin/data/local_data/commands.json"
+        private const val FILE_PATH = "./commands.json"
     }
 
     fun serialize() =

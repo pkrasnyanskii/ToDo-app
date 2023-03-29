@@ -14,11 +14,10 @@ class Deserializer(
 
     private companion object {
 
-        private const val FILE_PATH = "src/jvmMain/kotlin/data/local_data/commands.json"
+        private const val FILE_PATH = "./commands.json"
     }
 
     fun deserialize(): List<Command> {
-
         try {
             JsonReader(FileReader(FILE_PATH)).use { reader ->
                 val commandsListType = object : TypeToken<List<Command>>() {}.type
