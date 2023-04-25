@@ -2,9 +2,9 @@ package data.model
 
 import java.util.*
 
-class ObjectsStorage {
-
+class ObjectsStorage(
     val objects: MutableList<ModelObject> = mutableListOf()
+) {
 
     fun addObject(obj: ModelObject) {
         objects.add(obj)
@@ -13,6 +13,7 @@ class ObjectsStorage {
     fun getObjectById(id: UUID): ModelObject =
         objects.first { obj -> obj.id == id }
 
+    //Use ModelObject method instead
     fun getObjectFieldById(id: UUID): Field =
         objects.first { obj ->
             obj.fields
