@@ -35,10 +35,7 @@ class TaskRepositoryImpl(
             AddFieldCommand(taskObjectId, taskStatusFieldId, "taskStatus", "String"),
             SetFieldValueCommand(taskStatusFieldId, task.status)
         )
-
-        model.commandsStorage.commands.addAll(createTaskCommands)
-        model.commandExecutor.executeList(createTaskCommands, model.objectsStorage)
-        serializer.serialize()
+        createTaskCommands.forEach { command -> handleCommand(command) }
     }
 
     override fun changeTaskStatus(id: UUID, status: TaskStatus) {
@@ -47,9 +44,7 @@ class TaskRepositoryImpl(
             .getFieldByName("taskStatus")
             .id
         val setFieldValueCommand = SetFieldValueCommand(taskStatusFieldId, status)
-        model.commandsStorage.addCommand(setFieldValueCommand)
-        model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
-        serializer.serialize()
+        handleCommand(setFieldValueCommand)
     }
 
     override fun deleteTask(id: UUID) {
@@ -58,9 +53,7 @@ class TaskRepositoryImpl(
             .getFieldByName("taskStatus")
             .id
         val setFieldValueCommand = SetFieldValueCommand(taskStatusFieldId, TaskStatus.DELETED)
-        model.commandsStorage.addCommand(setFieldValueCommand)
-        model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
-        serializer.serialize()
+        handleCommand(setFieldValueCommand)
     }
 
     override fun editTaskText(id: UUID, text: String) {
@@ -69,8 +62,12 @@ class TaskRepositoryImpl(
             .getFieldByName("taskText")
             .id
         val setFieldValueCommand = SetFieldValueCommand(taskTextFieldId, text)
-        model.commandsStorage.addCommand(setFieldValueCommand)
-        model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
+        handleCommand(setFieldValueCommand)
+    }
+
+    private fun handleCommand(command: Command) {
+        model.commandsStorage.addCommand(command)
+        model.commandExecutor.execute(command, model.objectsStorage)
         serializer.serialize()
     }
 }
