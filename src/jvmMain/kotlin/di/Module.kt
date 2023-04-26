@@ -20,7 +20,7 @@ import domain.repository.TaskRepository
 import domain.usecase.*
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
-import presentation.TasksStateHolder
+import presentation.tasks.TasksStateHolder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -83,6 +83,7 @@ val domain = module {
     single { AddTaskUseCase(get()) }
     single { GetTasksUseCase(get()) }
     single { ChangeTaskStatusUseCase(get()) }
+    single { EditTaskUseCase(get()) }
     single { DeleteTaskUseCase(get()) }
     single<CommandRepository> { CommandRepositoryImpl(get(), get(), get(), get()) }
     single { GetDataUseCase(get()) }

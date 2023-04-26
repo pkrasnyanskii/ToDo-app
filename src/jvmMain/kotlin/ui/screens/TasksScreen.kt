@@ -1,4 +1,4 @@
-package ui
+package ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,12 +19,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import domain.entity.Task
 import domain.entity.TaskStatus
-import presentation.TasksStateHolder
-import presentation.TasksUiState
+import presentation.tasks.TasksStateHolder
+import presentation.tasks.TasksUiState
 import java.util.*
 
 @Composable
-fun TasksScreen(onEditClicked: (UUID, String) -> Unit) {
+fun TasksScreen(onEditClicked: (Task) -> Unit) {
     val stateHolder = remember { TasksStateHolder() }
 
     stateHolder.loadData()
@@ -117,7 +117,7 @@ fun TasksList(
     tasks: List<Task>,
     onStatusChange: (UUID, status: TaskStatus) -> Unit,
     onDeleteClicked: (UUID) -> Unit,
-    onEditClicked: (UUID, String) -> Unit
+    onEditClicked: (Task) -> Unit
 ) {
     val listState = rememberLazyListState()
 
@@ -135,7 +135,7 @@ fun TasksList(
                     )
                 },
                 onDeleteClicked = { onDeleteClicked(task.id) },
-                onEditClicked = { onEditClicked(task.id, task.text) }
+                onEditClicked = { onEditClicked(task) }
             )
         }
     }

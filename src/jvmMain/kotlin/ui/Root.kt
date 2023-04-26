@@ -6,6 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import ui.navigation.Screen
+import ui.screens.EditTaskScreen
+import ui.screens.TasksScreen
 
 @Composable
 fun Root() {
@@ -14,13 +16,13 @@ fun Root() {
     when (val screen = screenState) {
         is Screen.Tasks ->
             TasksScreen(
-                onEditClicked = { id, initialValue ->
-                    screenState = Screen.EditTask(id = id, initialValue = initialValue)
+                onEditClicked = { task ->
+                    screenState = Screen.EditTask(task = task)
                 }
             )
         is Screen.EditTask ->
             EditTaskScreen(
-                screen.initialValue,
+                screen.task,
                 onBackClicked = { screenState = Screen.Tasks }
             )
     }

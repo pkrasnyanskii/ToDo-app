@@ -1,4 +1,4 @@
-package ui
+package ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -6,43 +6,80 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
+import domain.entity.Task
+import presentation.editTask.EditTaskStateHolder
 
 @Composable
 fun EditTaskScreen(
-    initialValue: String,
+    task: Task,
     onBackClicked: () -> Unit
 ) {
-    var value by remember { mutableStateOf(initialValue) }
+    val stateHolder = remember { EditTaskStateHolder(
+        id = task.id,
+        initialValue = task.text
+    ) }
 
     Column(
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row {
-            Button(onClick = onBackClicked) {
-                Text("Back")
-            }
-            Text(text = "Edit task")
-        }
+        Text(
+            text = "Edit task",
+            textAlign = TextAlign.Center,
+        )
+
         Spacer(modifier = Modifier.height(16.dp))
-        Row {
-            InputField(value) { value = it }
-            Spacer(modifier = Modifier.width(16.dp))
-            Button(onClick = {  }) {
-                Text("Done")
-            }
-        }
+
+        InputField(
+            modifier = Modifier.fillMaxWidth()
+                .weight(9F),
+            value = stateHolder.state.value,
+            onValueChange = stateHolder::onTextChanged
+        )
+
+        BottomBar(
+            onBackClicked = onBackClicked,
+            onDoneClicked = { stateHolder.onDoneButtonPressed(task.id, onBackClicked) },
+            modifier = Modifier.fillMaxWidth()
+                .weight(1F)
+        )
     }
 }
 
 @Composable
 fun InputField(
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    TextField(value = value, onValueChange = onValueChange)
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun BottomBar(
+    onBackClicked: () -> Unit,
+    onDoneClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Button(onClick = onBackClicked) {
+            Text("Back")
+        }
+
+        Button(onClick = onDoneClicked) {
+            Text("Done")
+        }
+    }
 }

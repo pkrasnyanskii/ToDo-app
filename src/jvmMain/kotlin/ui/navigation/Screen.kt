@@ -1,8 +1,8 @@
 package ui.navigation
 
-import java.util.*
+import domain.entity.Task
 
 sealed class Screen {
     object Tasks : Screen()
-    data class EditTask(val id: UUID, val initialValue: String) : Screen()
+    data class EditTask(val task: Task) : Screen()
 }

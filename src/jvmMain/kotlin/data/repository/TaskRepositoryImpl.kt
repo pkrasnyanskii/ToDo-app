@@ -62,4 +62,15 @@ class TaskRepositoryImpl(
         model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
         serializer.serialize()
     }
+
+    override fun editTaskText(id: UUID, text: String) {
+        val taskTextFieldId = model.objectsStorage
+            .getObjectById(id)
+            .getFieldByName("taskText")
+            .id
+        val setFieldValueCommand = SetFieldValueCommand(taskTextFieldId, text)
+        model.commandsStorage.addCommand(setFieldValueCommand)
+        model.commandExecutor.execute(setFieldValueCommand, model.objectsStorage)
+        serializer.serialize()
+    }
 }
