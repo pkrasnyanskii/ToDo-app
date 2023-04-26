@@ -17,7 +17,9 @@ import data.serialization.Deserializer
 import data.serialization.Serializer
 import domain.repository.CommandRepository
 import domain.repository.TaskRepository
-import domain.usecase.*
+import domain.usecase.commands.GetDataUseCase
+import domain.usecase.commands.SendDataUseCase
+import domain.usecase.tasks.*
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import presentation.tasks.TasksStateHolder

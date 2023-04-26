@@ -5,7 +5,12 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import domain.entity.Task
 import domain.entity.TaskStatus
-import domain.usecase.*
+import domain.usecase.commands.GetDataUseCase
+import domain.usecase.commands.SendDataUseCase
+import domain.usecase.tasks.AddTaskUseCase
+import domain.usecase.tasks.ChangeTaskStatusUseCase
+import domain.usecase.tasks.DeleteTaskUseCase
+import domain.usecase.tasks.GetTasksUseCase
 import kotlinx.coroutines.*
 import org.koin.java.KoinJavaComponent.inject
 import java.util.UUID

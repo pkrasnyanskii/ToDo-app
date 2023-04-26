@@ -2,7 +2,7 @@ package presentation.editTask
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import domain.usecase.EditTaskUseCase
+import domain.usecase.tasks.EditTaskUseCase
 import org.koin.java.KoinJavaComponent.inject
 import java.util.UUID
 

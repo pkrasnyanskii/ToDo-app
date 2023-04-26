@@ -1,4 +1,4 @@
-package domain.usecase
+package domain.usecase.tasks
 
 import domain.repository.TaskRepository
 import java.util.UUID

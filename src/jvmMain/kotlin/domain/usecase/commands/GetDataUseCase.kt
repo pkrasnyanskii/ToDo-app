@@ -1,4 +1,4 @@
-package domain.usecase
+package domain.usecase.commands
 
 import domain.repository.CommandRepository
 
