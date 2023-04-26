@@ -9,6 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -23,7 +24,7 @@ import presentation.TasksUiState
 import java.util.*
 
 @Composable
-fun TasksScreen() {
+fun TasksScreen(onEditClicked: (UUID, String) -> Unit) {
     val stateHolder = remember { TasksStateHolder() }
 
     stateHolder.loadData()
@@ -67,7 +68,8 @@ fun TasksScreen() {
                     .fillMaxSize(),
                 tasks = (stateHolder.state.value as TasksUiState.Content).tasks,
                 onStatusChange = stateHolder::onStatusChanged,
-                onDeleteClicked = stateHolder::onTaskDeleteClicked
+                onDeleteClicked = stateHolder::onTaskDeleteClicked,
+                onEditClicked = onEditClicked
             )
         }
     }
@@ -98,13 +100,13 @@ fun NetworkButtons(
         modifier = Modifier.fillMaxWidth(0.5F)
     ) {
         WhiteButton(onClick = onSendButtonClicked) {
-            Text(text = "Send Tasks")
+            Text(text = "Commit Tasks")
         }
 
         Spacer(modifier = Modifier.width(8.dp))
 
         WhiteButton(onClick = onReceiveButtonClicked) {
-            Text(text = "Receive Tasks")
+            Text(text = "Update Tasks")
         }
     }
 }
@@ -113,8 +115,9 @@ fun NetworkButtons(
 fun TasksList(
     modifier: Modifier,
     tasks: List<Task>,
-    onStatusChange: (id: UUID, status: TaskStatus) -> Unit,
-    onDeleteClicked: (id: UUID) -> Unit
+    onStatusChange: (UUID, status: TaskStatus) -> Unit,
+    onDeleteClicked: (UUID) -> Unit,
+    onEditClicked: (UUID, String) -> Unit
 ) {
     val listState = rememberLazyListState()
 
@@ -131,7 +134,8 @@ fun TasksList(
                         }
                     )
                 },
-                onDeleteClicked = { onDeleteClicked(task.id) }
+                onDeleteClicked = { onDeleteClicked(task.id) },
+                onEditClicked = { onEditClicked(task.id, task.text) }
             )
         }
     }
@@ -142,7 +146,8 @@ fun TaskCard(
     modifier: Modifier,
     task: Task,
     onStatusChange: (Boolean) -> Unit,
-    onDeleteClicked: () -> Unit
+    onDeleteClicked: () -> Unit,
+    onEditClicked: () -> Unit
 ) {
     Card(
         modifier = modifier,
@@ -165,6 +170,15 @@ fun TaskCard(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            IconButton(onClick = onEditClicked) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = null
+                )
+            }
 
             Spacer(modifier = Modifier.width(8.dp))
 
