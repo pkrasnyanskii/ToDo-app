@@ -6,9 +6,12 @@ import data.serialization.Deserializer
 class CommandsStorage(
     deserializer: Deserializer
 ) {
-    val commands = deserializer.deserialize().toMutableList()
+    var commands = deserializer.deserialize().toMutableList()
 
     fun addCommand(command: Command) {
         commands.add(command)
     }
+
+    fun getMaxCommandId() =
+        commands.maxWith(Comparator.comparingInt {it.id}).id
 }

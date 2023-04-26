@@ -14,7 +14,7 @@ class CommandRepositoryImpl(
 ) : CommandRepository {
 
     override suspend fun getList() {
-        val commands = commandsApi.getCommands()
+        val commands = commandsApi.getCommands(model.commandsStorage.getMaxCommandId())
             .map { commandModel -> converter.convert(commandModel) }
 
         model.commandsStorage.commands.addAll(commands)
