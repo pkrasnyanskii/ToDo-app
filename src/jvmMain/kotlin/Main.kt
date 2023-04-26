@@ -7,13 +7,13 @@ import di.data
 import di.domain
 import di.presentation
 import org.koin.core.context.GlobalContext.startKoin
-import ui.TasksScreen
+import ui.Root
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
-        TasksScreen()
+        Root()
     }
 }
 
