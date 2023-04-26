@@ -27,6 +27,8 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.material3)
                 implementation("com.google.code.gson:gson:2.10.1")
                 implementation("io.insert-koin:koin-core:3.4.0")
                 implementation("com.squareup.retrofit2:retrofit:2.9.0")
