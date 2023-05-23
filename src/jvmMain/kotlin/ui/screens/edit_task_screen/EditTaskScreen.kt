@@ -1,4 +1,4 @@
-package ui.screens
+package ui.screens.edit_task_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
