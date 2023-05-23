@@ -1,13 +1,9 @@
 package ui
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import ui.navigation.Screen
-import ui.screens.EditTaskScreen
-import ui.screens.TasksScreen
+import ui.screens.edit_task_screen.EditTaskScreen
+import ui.screens.tasks_screen.TasksScreen
 
 @Composable
 fun Root() {
