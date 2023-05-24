@@ -1,5 +1,6 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.example.compose.AppTheme
@@ -28,10 +29,12 @@ fun main() {
             presentation
         )
     }
+
     application {
         Window(
             onCloseRequest = ::exitApplication,
-            title = "PlannerScape"
+            title = "PlannerScape",
+            icon = painterResource("drawable/icon.svg")
         ) {
             App()
         }

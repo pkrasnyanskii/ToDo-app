@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.outlined.Send
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -54,7 +56,7 @@ fun Input(
 
         IconButton(onClick = onAddClicked) {
             Icon(
-                imageVector = Icons.Outlined.Send,
+                imageVector = Icons.Default.AddCircle,
                 modifier = Modifier.alpha(1F),
                 contentDescription = null
             )

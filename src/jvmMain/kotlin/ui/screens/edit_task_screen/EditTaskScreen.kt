@@ -1,6 +1,8 @@
 package ui.screens.edit_task_screen
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -8,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import domain.entity.Task
@@ -60,7 +63,7 @@ fun InputField(
     TextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier
+        modifier = modifier.clip(shape = RoundedCornerShape(30.dp))
     )
 }
 
@@ -74,11 +77,17 @@ fun BottomBar(
         modifier = modifier,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Button(onClick = onBackClicked) {
+        Button(
+            onClick = onBackClicked,
+            shape = CircleShape
+        ) {
             Text("Back")
         }
 
-        Button(onClick = onDoneClicked) {
+        Button(
+            onClick = onDoneClicked,
+            shape = CircleShape
+        ) {
             Text("Done")
         }
     }
