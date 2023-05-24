@@ -11,12 +11,16 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowCircleRight
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.RocketLaunch
+import androidx.compose.material.icons.filled.Upload
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,13 +42,26 @@ fun TasksScreen(onEditClicked: (Task) -> Unit) {
     Row {
         Image(
             painterResource("drawable/TaskListLeftBarImage.png"),
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier.fillMaxHeight()
         )
-        Box {
+        Box(
+            modifier = Modifier.background(Color(255, 235, 230))
+        ) {
             Image(
                 painterResource("drawable/TaskListBackgroundImage.png"),
-                contentDescription = null
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.matchParentSize()
             )
+            /*Box(
+                modifier = Modifier.fillMaxSize()
+                    .paint(
+                        painterResource("drawable/TaskListBackgroundImage.png"),
+                        contentScale = ContentScale.FillBounds
+                    )
+            )*/
             Scaffold(
                 backgroundColor = Color.Transparent,
                 topBar = {
@@ -110,7 +127,7 @@ fun NetworkButtons(
             Text(text = "Send")
             Spacer(modifier = Modifier.width(8.dp))
             Icon(
-                imageVector = Icons.Default.ArrowCircleRight,
+                imageVector = Icons.Default.Upload,
                 contentDescription = null
             )
         }
@@ -121,7 +138,7 @@ fun NetworkButtons(
             Text(text = "Receive")
             Spacer(modifier = Modifier.width(8.dp))
             Icon(
-                imageVector = Icons.Default.RocketLaunch,
+                imageVector = Icons.Default.Download,
                 contentDescription = null
             )
         }

@@ -61,6 +61,8 @@ compose.desktop {
                 msiPackageVersion = "1.0.0"
                 // a version only for the exe package
                 exePackageVersion = "1.0.0"
+
+                iconFile.set(project.file("drawable/icon.svg"))
             }
         }
     }
