@@ -8,7 +8,10 @@ class CommandExecutor(
 ) {
 
     fun executeAll(objectStorage: ObjectsStorage) {
-        this.storage.commands.forEach { it.execute(objectStorage) }
+        this.storage.commands.forEach {
+            println("${it.id}")
+            it.execute(objectStorage)
+        }
     }
 
     fun executeList(commands: List<Command>, objectStorage: ObjectsStorage) {

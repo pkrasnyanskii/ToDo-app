@@ -22,7 +22,25 @@ class CommandRepositoryImpl(
         serializer.serialize()
     }
 
+    //send list = sync
     override suspend fun sendList() {
-        commandsApi.sendCommands(model.commandsStorage.commands)
+        /*val ids: List<Int> = commandsApi.sendCommands(model.commandsStorage.commands)
+        println(ids)
+        println("||||||")
+        model.commandsStorage.setIds(ids)
+        model.commandsStorage.commands.forEach { c -> println(c.id) }
+        serializer.serialize()*/
+//        model.commandsStorage.commands =
+//            model.commandsStorage.commands.filter { command -> command.id != -1 }.toMutableList()
+
+        //send all (adds all commands with id -1 to table)
+        val ids: List<Int> = commandsApi.sendCommands(model.commandsStorage.commands)
+        println(ids)
+        //get all commands (all with id's), execute them and write to json file
+        model.commandsStorage.commands = commandsApi.getAllCommands()
+            .map { commandModel -> converter.convert(commandModel) }
+            .toMutableList()
+        model.commandExecutor.executeAll(model.objectsStorage)
+        serializer.serialize()
     }
 }

@@ -13,9 +13,6 @@ import ui.Root
 @Composable
 @Preview
 fun App() {
-    /*MaterialTheme {
-        Root()
-    }*/
     AppTheme {
         Root()
     }

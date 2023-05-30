@@ -11,6 +11,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material.icons.filled.Upload
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -120,25 +121,26 @@ fun NetworkButtons(
         horizontalArrangement = Arrangement.End,
         modifier = Modifier.fillMaxWidth(0.5F)
     ) {
+        //eto sync
         WhiteRoundButton(onClick = onSendButtonClicked) {
-            Text(text = "Send")
+            Text(text = "Sync")
             Spacer(modifier = Modifier.width(8.dp))
             Icon(
-                imageVector = Icons.Default.Upload,
+                imageVector = Icons.Default.Sync,
                 contentDescription = null
             )
         }
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        WhiteRoundButton(onClick = onReceiveButtonClicked) {
-            Text(text = "Receive")
-            Spacer(modifier = Modifier.width(8.dp))
-            Icon(
-                imageVector = Icons.Default.Download,
-                contentDescription = null
-            )
-        }
+//
+//        Spacer(modifier = Modifier.width(8.dp))
+//
+//        WhiteRoundButton(onClick = onReceiveButtonClicked) {
+//            Text(text = "Receive")
+//            Spacer(modifier = Modifier.width(8.dp))
+//            Icon(
+//                imageVector = Icons.Default.Download,
+//                contentDescription = null
+//            )
+//        }
     }
 }
 

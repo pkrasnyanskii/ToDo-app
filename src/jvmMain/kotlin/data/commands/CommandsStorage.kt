@@ -14,4 +14,13 @@ class CommandsStorage(
 
     fun getMaxCommandId() =
         commands.maxWith(Comparator.comparingInt {it.id}).id
+
+    fun setIds(ids: List<Int>) {
+        var currentIdx = 0
+        for (command in commands) {
+            if (command.id == -1) {
+                command.id = ids[currentIdx++]
+            }
+        }
+    }
 }

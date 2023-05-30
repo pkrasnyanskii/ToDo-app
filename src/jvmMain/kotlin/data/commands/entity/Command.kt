@@ -6,7 +6,7 @@ abstract class Command(
     private val commandType: CommandType
 ) {
 
-    abstract val id: Int
+    abstract var id: Int
 
     abstract fun execute(storage: ObjectsStorage)
 

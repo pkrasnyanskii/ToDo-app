@@ -9,10 +9,13 @@ import retrofit2.http.Path
 
 interface CommandsApi {
 
+    @GET("commands")
+    suspend fun getAllCommands(): List<CommandModel>
+
     @GET("commands/{id}")
     suspend fun getCommands(@Path("id") id: Int): List<CommandModel>
 
     @POST("commands")
     @JvmSuppressWildcards
-    suspend fun sendCommands(@Body commands: List<Command>)
+    suspend fun sendCommands(@Body commands: List<Command>): List<Int>
 }

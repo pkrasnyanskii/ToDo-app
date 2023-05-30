@@ -7,7 +7,7 @@ import java.util.*
 class CreateObjectCommand(
     private val objectId: UUID,
     private val objectType: String,
-    override val id: Int = Companion.DEFAULT_ID
+    override var id: Int = Companion.DEFAULT_ID
 ) : Command(CommandType.CREATE_OBJECT_COMMAND) {
 
     override fun execute(storage: ObjectsStorage) {

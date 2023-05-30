@@ -71,10 +71,15 @@ class TasksStateHolder {
         }
     }
 
+    //eto sync (da da kostili)
     @OptIn(DelicateCoroutinesApi::class)
     fun onSendDataButtonClicked() {
         GlobalScope.launch(Dispatchers.Default) {
             sendDataUseCase()
+
+            setState {
+                copy(tasks = getTasksUseCase(), inputText = "")
+            }
         }
     }
 

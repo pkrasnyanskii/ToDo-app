@@ -62,7 +62,7 @@ compose.desktop {
                 // a version only for the exe package
                 exePackageVersion = "1.0.0"
 
-                iconFile.set(project.file("drawable/icon.svg"))
+                iconFile.set(project.file("src/jvmMain/resources/drawable/icon.svg"))
             }
         }
     }
