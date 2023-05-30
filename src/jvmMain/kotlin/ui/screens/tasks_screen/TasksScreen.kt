@@ -10,15 +10,12 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowCircleRight
 import androidx.compose.material.icons.filled.Download
-import androidx.compose.material.icons.filled.RocketLaunch
 import androidx.compose.material.icons.filled.Upload
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -44,10 +41,10 @@ fun TasksScreen(onEditClicked: (Task) -> Unit) {
             painterResource("drawable/TaskListLeftBarImage.png"),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
-            modifier = Modifier.fillMaxHeight()
+            modifier = Modifier.weight(0.25F).fillMaxHeight()
         )
         Box(
-            modifier = Modifier.background(Color(255, 235, 230))
+            modifier = Modifier.weight(0.75F).background(Color(255, 235, 230))
         ) {
             Image(
                 painterResource("drawable/TaskListBackgroundImage.png"),
